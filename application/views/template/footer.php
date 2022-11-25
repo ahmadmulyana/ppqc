@@ -35,6 +35,7 @@
     <script type="text/javascript">
         var page = "<?= $page; ?>";
         base_url='<?=base_url();?>';
+        /*
         $.ajaxSetup({
           headers: { 'csrf_token': $('meta[name="<?=$this->security->get_csrf_token_name();?>"]').attr('content') },
           xhrFields: {
@@ -42,13 +43,14 @@
           },
           dataType: 'json',
           cache: false
-        });
+        });*/
     </script>
+
 
     <script src="<?= base_url('assets/');?>js/pages/smart-wizard.js"></script>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    
+
     <?php if ($page=="edit_nc" || $page=="lihat_nc" || $page=="add_nc" ) { ?>
         <script src="<?= base_url('assets/');?>js/modules/dropzone/dropzone.js"></script>
         <script src="<?= base_url('assets/');?>js/ekaperintis.js"></script>
@@ -57,8 +59,12 @@
     <script src="<?= base_url('assets/');?>vendors/toast/jquery.toast.min.js"></script>
 
     <!-- Haribima JS -->
-    <script src="<?= base_url('assets/');?>js/haribima-script.js"></script>
 
+    <?php 
+    if ($page <> "user/add") { ?>
+        <script src="<?= base_url('assets/');?>js/haribima-script.js"></script>
+    <?php } ?>
+    
     <script type="text/javascript">
         var base_url = "<?php echo base_url(); ?>";
         var editor_style = "<?php echo $this->config->item('editor_style'); ?>";

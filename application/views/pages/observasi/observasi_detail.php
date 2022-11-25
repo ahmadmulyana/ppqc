@@ -73,52 +73,46 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-body overflow-auto p-4">
-
+                            <table class="table table-striped" id="thisTable">
+                                <thead>
+                                <tr>
+                                    <th style="display: none;">#</th>
+                                    <th>Pekerjaan</th>
+                                    <th>Tanggal</th>
+                                    <th>Dampak Masalah</th>
+                                    <th>Uraian Potensi Masalah</th>
+                                    <?php if ($this->session->userdata('admin_level') =='3') { ?> 
+                                    <th>Level</th>
+                                    <?php } ?>
+                                </tr>
+                            </thead>
                             <?php 
                             if ($observasi) {
 
                                 foreach ($observasi as $r) { ?>
                             
-
-                            <div class="row mb-2">
-                                <div class="col">
+                                    <tr>
+                                        <td style="display: none;"><?= $r->id; ?></td>
+                                        <td><?= $r->pekerjaan; ?></td>
+                                        <td><?= $r->tanggal; ?></td>
+                                        <td><?= $r->dampak_masalah; ?></td>
+                                        <td><?= $r->uraian_potensi_masalah; ?></td>
+                                        <td>
+                                            
+                                            <?php if ($this->session->userdata('admin_level') =='3') { ?> 
                                     <div class="form-group">
-                                        <label>Item Pekerjaan</label>
-                                        <textarea class="form-control" rows="2" readonly><?= $r->pekerjaan; ?></textarea>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="form-group">
-                                        <label>Tanggal</label>
-                                        <textarea class="form-control" rows="2" readonly><?= $r->tanggal; ?></textarea>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="form-group">
-                                        <label>Dampak Masalah</label>
-                                        <textarea class="form-control" rows="2" readonly><?= $r->dampak_masalah; ?></textarea>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="form-group">
-                                        <label>Uraian Potensi Masalah</label>
-                                        <textarea class="form-control" rows="2" readonly><?= $r->uraian_potensi_masalah; ?></textarea>
-                                    </div>
-                                </div>
-                                <!-- Penilaian = Khusus di admin -->
-                                <div class="col">
-                                    <div class="form-group">
-                                        <label>Level</label>
                                         <select class="form-control" id="level" name="level">
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
+                                            <option value="0">--Pilih--</option>
+                                            <option value="1" <?= $r->level=='1' ? 'selected' : '' ?> >1</option>
+                                            <option value="2" <?= $r->level=='2' ? 'selected' : '' ?> >2</option>
+                                            <option value="3" <?= $r->level=='3' ? 'selected' : '' ?> >3</option>
+                                            <option value="4" <?= $r->level=='4' ? 'selected' : '' ?> >4</option>
                                         </select>
                                     </div>
-                                </div>
-                                <!-- end: Penilaian -->
-                            </div>
+                            <?php } ?>
+
+                                        </td>
+                                    </tr>
 
                             <?php } } else { ?>
                                 
@@ -129,6 +123,8 @@
                                 </div>
 
                             <?php } ?>
+
+                            </table>
 
                         </div>
                     </div>

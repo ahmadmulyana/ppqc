@@ -27,6 +27,9 @@ class Inspeksi extends CI_Controller {
 		$data['project'] = $project;
 		$data['inspeksi'] = $this->db->get_where('tr_inspeksi', array('user_id' => $user_id))->result();
 		
+		$data['pm'] = $this->db->get_where('musers', array('level_id' => '2'))->result();
+		$data['mwt'] = $this->db->get_where('tr_mwt', array('user_id' => $user_id))->result();
+
 		$this->load->view('template/header', $data);
 		$this->load->view('pages/inspeksi/index', $data);
 		$this->load->view('template/footer', $data);
@@ -49,6 +52,24 @@ class Inspeksi extends CI_Controller {
 		
 		$hasil = $this->db->query("INSERT INTO tr_inspeksi (project_id, tanggal, keterangan, user_id) 
 				VALUES ('".$this->session->userdata('project_id')."', '".$tanggal."', '".$keterangan."','".$user_id."')");
+		
+		if ($hasil){
+			redirect('inspeksi');
+		}
+		
+	}
+
+	public function saveMWT() {
+
+		$project = $this->input->post('project', TRUE);
+		$tanggal = $this->input->post('tanggal', TRUE);
+		$keterangan = $this->input->post('keterangan', TRUE);
+
+		$user_id = $this->session->userdata('admin_id');
+		$pm_id = $this->input->post('pm', TRUE);
+		
+		$hasil = $this->db->query("INSERT INTO tr_mwt (project_id, tanggal, keterangan, user_id, pm_id) 
+				VALUES ('".$this->session->userdata('project_id')."', '".$tanggal."', '".$keterangan."','".$user_id."','".$pm_id."')");
 		
 		if ($hasil){
 			redirect('inspeksi');
@@ -83,6 +104,17 @@ class Inspeksi extends CI_Controller {
 		$writer->save("uploads/excel/".$fileName);
 		header("Content-Type: application/vnd.ms-excel");
         redirect(base_url()."/uploads/excel/".$fileName);              
-    }   
+    } 
+
+    public function validasi()
+	{
+		$data['page'] = 'validasi';
+
+		$sql ="SELECT a.*, b.nama_lengkap, c.nama_proyek FROM tr_inspeksi a INNER JOIN m_users b ON a.user_id = b.id INNER JOIN mproyek c ON a.project_id = c.id";
+		$data['data'] = $this->db->query($sql)->result();
+		$this->load->view('template/header', $data);
+		$this->load->view('pages/inspeksi/validasi', $data);
+		$this->load->view('template/footer', $data);
+	}  
 	
 }

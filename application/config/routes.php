@@ -38,7 +38,7 @@ $route['add'] = '/user/save/';
 $route['master_nc'] = 'home/master_nc';
 
 $route['inspeksi'] = 'inspeksi/index';
-$route['validasi'] = 'home/validasi';
+$route['validasi'] = 'inspeksi/validasi';
 
 $route['profile'] = 'home/profile';
 
@@ -46,3 +46,5 @@ $route['general'] = 'home/general';
 
 $route['nc_user'] = 'nc/nc_user';
 $route['nc_admin'] = 'nc/nc_admin';
+
+$route['monitoring'] = 'monitoring';

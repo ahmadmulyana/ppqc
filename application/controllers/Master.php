@@ -223,6 +223,23 @@ class Master extends CI_Controller {
 		$this->load->view('template/footer', $page);
 	}
 
+	public function level_nc_edit(){
+		$uri2 = $this->uri->segment(2);
+		$uri3 = $this->uri->segment(3);
+		$uri4 = $this->uri->segment(4);
+
+		$a = $this->db->query("SELECT * FROM m_level_nc WHERE id = '$uri3'")->row();
+		if ($a){
+			j($a);	
+		}else{
+			$a['status'] =false;
+			$a['data'] ="tidak ada";
+			j($a);	
+		}
+		
+		exit();
+	}
+	
 	public function level_nc_simpan() {
 		$level_nc = $this->input->post('level_nc');
 		$id = $this->input->post('id');
@@ -441,7 +458,7 @@ class Master extends CI_Controller {
 	public function kriteria_penilaian_hapus(){
 		$uri3 = $this->uri->segment(3);
 		
-		$this->db->query("DELETE FROM m_sumber_nc WHERE id = '".$uri3."'");
+		$this->db->query("DELETE FROM m_kriteria_penilaian WHERE id = '".$uri3."'");
 		$ret_arr['status'] 	= "ok";
 		$ret_arr['caption']	= "hapus sukses";
 		j($ret_arr);

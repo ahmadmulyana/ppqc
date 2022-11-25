@@ -28,7 +28,8 @@
                             </div>
                         </div>
                         <div class="card-body subtitle overflow-auto p-4">
-                            <form action="<?= site_url('user/save')?>" method="POST">
+                            <form action="<?= site_url('user/update')?>" method="POST">
+                                <input value="<?= $user->id; ?>" type="hidden" class="form-control" name="id">
                                 <div class="row mb-3">
                                     <div class="form-group col-md-12">
                                         <label>Nama Lengkap</label>
@@ -67,16 +68,20 @@
                                         </select>
                                     </div>
                                 </div>
+
+                                <!--
                                 <div class="row mb-3">
                                     <div class="form-group col-md-12">
                                         <label>Password</label>
                                         <input value="<?= $user->sandi; ?>" type="password" class="form-control" name="password">
                                     </div>
                                 </div>
+                                -->
 
                                 <div class="row mb-3">
                                     <div class="form-group col-md-3">
                                         <button class="btn btn-primary" role="button" type="submit">Submit</button> 
+                                        <a class="btn btn-danger" href="<?= site_url('personal'); ?>"> Batal </a>
                                     </div>
                                 </div>
                             </form>

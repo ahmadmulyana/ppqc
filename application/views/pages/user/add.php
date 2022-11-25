@@ -13,9 +13,10 @@
         
         <div class="content-wrapper">
             <?php if($this->session->flashdata('msg_alert')) { ?>
-              <div class="alert alert-info">
-                <label style="font-size: 13px;"><?=$this->session->flashdata('msg_alert');?></label>
-              </div>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                  <strong>Warning!</strong> <?=$this->session->flashdata('msg_alert');?>
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
             <?php } ?>
 
             <div class="row gap-m-2">
@@ -80,6 +81,7 @@
                                 <div class="row mb-3">
                                     <div class="form-group col-md-3">
                                         <input type="submit" class="btn btn-primary" value='Submit' >
+                                        <a class="btn btn-danger" href="<?= site_url('personal'); ?>"> Batal </a>
                                     </div>
                                 </div>
                             <?=form_close();?>
