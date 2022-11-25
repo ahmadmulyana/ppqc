@@ -240,6 +240,7 @@
                     }
                     ?>
 
+                    <?php if ($this->session->userdata('admin_level') =='3') { ?> 
                     <a class="nav-link sidebar-link <?= $active; ?>" data-bs-toggle="collapse" href="#setting" role="button" aria-expanded="false" aria-controls="setting">
                         <span class="material-icons-round material-22">settings</span>
                         <span class="subtitle ms-3">Setting</span>
@@ -303,12 +304,23 @@
                         </ul>
                     </div>
                 </li>
+
+                
                 <li>
                     <a href="<?= site_url('personal');?>" class="nav-link sidebar-link <?= $page=="personal" ? 'active' : ''; ?>">
                         <span class="material-icons-round material-22">group_add</span>
                         <span class="subtitle ms-3">User</span>
                     </a>
                 </li>
+                <?php } ?>
+
+                <li>
+                    <a href="<?= site_url('monitoring') ?>" class="nav-link sidebar-link" target="blank">
+                        <span class="material-icons-round material-22">dashboard</span>
+                        <span class="subtitle ms-3">Mode Monitoring</span>
+                    </a>
+                </li>
+
                 <li>
                     <a href="<?= base_url('assets/images/');?>PP-QHSE.pdf" class="nav-link sidebar-link" download>
                         <span class="material-icons-round material-22">description</span>

@@ -31,37 +31,23 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td class="text-primary fw-bolder">1</td>
-                                        <td>Proyek-1</td>
-                                        <td>Akmal Amrullah</td>
-                                        <td>Area-1</td>
-                                        <td>PM</td>
-                                        <td class="text-center">
-                                            <select class="form-select">
-                                                <option selected="">Ok</option>
-                                                <option value="1">Not Ok</option>
-                                            </select>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-primary fw-bolder">2</td>
-                                        <td>Proyek-1</td>
-                                        <td>Akmal Amrullah</td>
-                                        <td>Area-1</td>
-                                        <td>PM</td>
-                                        <td class="text-center">
-                                            <select class="form-select">
-                                                <option selected="">Ok</option>
-                                                <option value="1">Not Ok</option>
-                                            </select>
-                                        </td>
-                                    </tr>
+                                    <?php $no=1; foreach ($data as $row)  { ?>
+                                        <tr>
+                                            <td class="text-primary fw-bolder"><?= $no ?></td>
+                                            <td><?= $row->nama_proyek ?></td>
+                                            <td><?= $row->nama_lengkap ?></td>
+                                            <td>Area-1</td>
+                                            <td>PM</td>
+                                            <td class="text-center">
+                                                <select class="form-select">
+                                                    <option selected="">Ok</option>
+                                                    <option value="1">Not Ok</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                    <?php $no++; } ?>
                                 </tbody>
                             </table>
-                            <div class=" mb-2 mt-4">
-                                <a href="#" class="btn btn-primary">Submit</a>
-                            </div>
                         </div>
                     </div>
                 </div>

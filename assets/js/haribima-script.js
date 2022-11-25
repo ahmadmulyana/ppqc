@@ -20,6 +20,10 @@ $(document).ready(function(){
         placeholder: "-- Pilih -- "
     });
 
+    $(".project_insveksi").select2({
+    	placeholder: "-- Pilih -- "
+    });
+
     $('#project_bank').change(function() {
         $("#project_id").val(this.value);
     });
@@ -671,6 +675,29 @@ function m_sumber_nc_h(id) {
 }
 
 /* Level NC */
+
+function m_level_nc_e(id) {
+	$("#m_type_nc").modal('show');
+	$.ajax({
+		type: "GET",
+		url: base_url+"master/level_nc_edit/"+id,
+		success: function(data) {
+			if (data.status==false){
+				$(".modal-title").text("Tambah Data");
+				$("#level_nc").val("");
+				$("#level_nc").focus();
+			}else{
+				$(".modal-title").text("Edit Data");
+				$("#id").val(data.id);
+				$("#level_nc").val(data.level_nc);
+				$("#level_nc").focus();
+			}
+			
+		}
+	});
+	return false;
+}
+
 function m_level_nc_s() {
 	var f_asal	= $("#f_type_nc");
 	var form = $('#f_type_nc').serialize();
@@ -908,39 +935,6 @@ function previewFileLogo(input){
     }
 }
 
-function lockNilai(id){
-	if (confirm('Anda yakin..?')) {
-		$.ajax({
-		    url: base_url + "qsia/lock",
-		    type: "post",
-		    data: {id : id},
-		    dataType: "json",
-		    success: function (response) {
-		    	if (response.status == "ok") {
-		    		toastr_option();
-        			toastr.success(response.caption);
-				} else {
-					toastr.success(
-			          'Done',
-			          'Added Successfully',
-				        {
-				          timeOut: 1000,
-				          fadeOut: 1000,
-				          onHidden: function () {
-				            window.location.reload();
-				         }
-				       });
-				}
-		    },
-		    error: function() {
-		       console.log("error");
-		    }
-		});
-	}
-
-	return false;
-}
-
 function toastr_option() {
     toastr.options = {
         "newestOnTop": true, 
@@ -961,3 +955,70 @@ function toastr_option() {
         }
     }
 }
+
+/*
+$('#level').change(function() {
+	var tds = $(this).addClass('row-highlight').find('td');
+    var values = '';
+    var level = '';
+    tds.each(function(index, item) {
+    	if (index==0){
+    		values = $(item).html();
+    	}   
+
+    	if (index==5){
+    		level = $("#level").val();
+    	}        
+    });
+
+    alert(level);
+
+    if (confirm('Anda yakin..?')) {
+		$.ajax({
+			type: "POST",
+			url: base_url+"observasi/update/"+values,
+			data : {id : values, level : level},
+			success: function(response) {
+				if (response.status == "ok") {
+					window.location.assign(base_url+"observasi"); 
+				} else {
+					console.log('gagal');
+				}
+			}
+		});
+	}
+	return false;
+
+});
+*/
+
+$('#thisTable tr').on('change', function(event) {    
+    var tds = $(this).addClass('row-highlight').find('td');
+    var values = '';
+    var level = '';
+    tds.each(function(index, item) {
+    	if (index==0){
+    		values = $(item).html();
+    	}   
+
+    	if (index==5){
+    		level = $("#level").val();
+    	}        
+    });
+
+    if (confirm('Anda yakin mau update level..?')) {
+		$.ajax({
+			type: "POST",
+			url: base_url+"observasi/update",
+			data : {id : values, level : level},
+			success: function(response) {
+				if (response.status == "ok") {
+					//window.location.assign(base_url+"observasi"); 
+				} else {
+					console.log('gagal');
+				}
+			}
+		});
+	}
+	return false;
+});
