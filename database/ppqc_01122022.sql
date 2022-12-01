@@ -2797,68 +2797,69 @@ CREATE TABLE IF NOT EXISTS `mproyek` (
   `oss_bucket_created_at` datetime NOT NULL,
   `created_at` datetime DEFAULT NULL,
   `created_by` int(11) DEFAULT NULL,
+  `status_lock` enum('Y','N') DEFAULT 'N',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=79 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 -- Dumping data for table ppqc.mproyek: ~55 rows (approximately)
 DELETE FROM `mproyek`;
 /*!40000 ALTER TABLE `mproyek` DISABLE KEYS */;
-INSERT INTO `mproyek` (`id`, `kode_proyek`, `nama_proyek`, `lokasi`, `latitude`, `longitude`, `konsultan`, `currency_id`, `nilai_kontrak`, `nilai_kontrak_add`, `jenis_kontrak_id`, `periode_start_date`, `periode_end_date`, `masa_pemeliharaan_start`, `masa_pemeliharaan_end`, `sumber_dana`, `owner`, `panjang_efektif`, `keterangan`, `tipe_projek`, `tipe_bangunan`, `pph_final`, `status`, `finish`, `oss_bucket_created`, `oss_bucket_created_at`, `created_at`, `created_by`) VALUES
-	(13, '251610', 'Jalan Tol Pandaan Malang', 'Jl. Raya Parelegi no. 8A, Kec. Purwodadi, Kab. Malang', '-7.937177', '112.652851', 'PT Virama Karya', 1, 3810950727273.000, 4016824748933.000, 1, '2016-11-08', '2020-01-31', '2020-01-31', '2023-01-30', '5', 'PT Jasamarga Pandaan Malang', '38,438 Km', NULL, 2, 'Highway', 3.00, '0', 0, 0, '0000-00-00 00:00:00', '2021-12-14 14:36:43', 1),
-	(14, '281603', 'Jalan Tol Manado - Bitung', 'Jl. Tumi\'deng Desa Paslaten Kecamatan Kauditan', '1,4106', '125,105', 'KSO Buana Mabit', 1, 2879036063017.000, 2879036063017.000, 1, '2017-08-04', '2021-03-29', '2021-03-30', '2024-03-28', '5', 'PT. Jasa Marga Manado Bitung', '25,756 Km', 'Add 8 23 Maret 2020 ; Add Waktu dan CCO', 2, 'Highway', 3.00, '1', 0, 0, '0000-00-00 00:00:00', '2020-11-03 08:56:34', 1),
-	(15, '217008', 'Simpang Susun Tol Serang - Panimbang', 'Serang, Provinsi Banten', '106,182901', '-6.338779', 'PT. Jaya CM KSO', 1, 536212739581.000, 536212739581.000, 1, '2018-03-05', '2020-03-05', '2020-03-06', '2023-03-06', '5', 'PT. Wijaya Karya Serang Panimbang', NULL, NULL, 2, 'Interchange', 3.00, '1', 0, 1, '2021-12-16 05:27:15', '2020-11-02 16:45:39', 1),
-	(16, '218001', 'Peningkatan Jalan dan Penanganan Longsor Access Road PLTA Upper Cisokan', 'Desa Sarinagen, Desa Sirnagalih, Desa Cijambu (Kecamatan Cipongkor), Desa Cibitung,', '', '', 'PLN Enjiniring', 1, 453969515117.000, 454263776807.000, 1, '2018-03-29', '2020-02-17', '2020-12-31', '2021-06-29', '4', 'PT. PLN (Persero) Unit Induk Pembangunan Jawa Bagian Tengah I', NULL, NULL, 2, 'Access Road', 3.00, '0', 0, 0, '0000-00-00 00:00:00', '2022-01-27 10:09:14', 1),
-	(18, '218002', 'Jembatan Penghubung PIK', 'Pantai Indah Kapuk, Jakarta Utara', '92774.668', '9325140.502', 'PT. Jakarta Rencana Selaras', 0, 193988978181.000, 193988978181.000, NULL, '2018-05-21', '2019-12-15', '2019-12-16', '2020-12-15', '5', 'PT Kapuknaga Indah', NULL, NULL, 2, 'Bridge', 3.00, '0', 0, 0, '0000-00-00 00:00:00', '2022-01-27 09:56:05', 1),
-	(19, '218003', 'Runway 3 Bandara Soekarno Hatta Section 1', 'Jl. Perimeter Utara Pos 25, Pajang, Benda, Tangerang', '106,644573218725', '-6,11392280105364', 'PT. Ciriajasa Cipta Mandiri', 1, 1145734666000.000, 1213007393003.000, 4, '2018-05-14', '2019-11-28', '2019-12-01', '2019-12-10', '4', 'PT. Angkasa Pura II (Persero)', NULL, NULL, 2, 'Airport Infrastructure', 3.00, '0', 0, 0, '0000-00-00 00:00:00', '2022-01-07 09:35:32', 1),
-	(20, '218007', 'Simpang Susun Sentul Selatan', 'Jl Tol Jagorawi - Jl Tol Bogor Outer Ring Road', '-6.5620708', '106.8078766', 'PT Indec Internusa', 1, 166.000, 183403017273.000, 1, '2019-01-29', '2020-04-28', '2020-04-29', '2021-04-28', '4', 'PT Jasa Marga (Persero) Tbk', NULL, NULL, 2, 'Interchange', 3.00, '0', 0, 0, '0000-00-00 00:00:00', '2022-01-27 09:57:22', 1),
-	(21, '219001', 'Jalan Tol Bogor Ring Road Seksi IIIA', 'Jalan Soleh Iskandar – Kecamatan Tanah Sareal, Kota Bogor', '-6,54447368', '106,77482204', 'PT Indec Internusa KSO PT Eskapindo Matra', 1, 1249659091262.000, 1249659091262.000, 2, '2018-12-21', '2020-12-31', '2021-01-01', '2021-01-01', '4', 'PT Marga Sarana Jabar', NULL, NULL, 2, 'Highway', 3.00, '0', 0, 0, '0000-00-00 00:00:00', '2022-01-27 09:58:04', 1),
-	(26, '219002', 'Jalan Tol Indrapura - Kisaran', 'Indrapura, Sumatera Utara', '364741.08 ', '538760.80 ', 'PT Virama Karya', 1, 3674271818181.000, 3674271818181.000, 1, '2018-12-20', '2020-12-18', '2020-12-19', '2022-12-18', '5', 'PT Hutama Karya', NULL, NULL, 2, 'Highway', 3.00, '1', 0, 1, '2021-07-05 11:19:11', '2020-11-02 16:42:34', 1),
-	(27, '219003', 'Rest Area Tol Bakauheni', 'Kalianda, Lampung Selatan', '105,5807128', '-5,6805845', 'PT. Cipta Strada', 1, 235981839069.000, 243834552605.000, 1, '2019-07-01', '2020-03-31', '2020-04-01', '2022-03-31', '4', 'PT. Hutama Karya (Persero)', '2 Titik (Kanan Kiri)', '', 2, 'Infrastructure Facilities', 3.00, '0', 0, 0, '0000-00-00 00:00:00', '2022-01-27 10:05:25', 1),
-	(28, '219006', 'Pembangunan STS Lenteng Agung - IISIP', 'Jl Raya Lenteng Agung, Kecamatan Jagakarsa', '106.835088', '-6.323352', 'PT.Perentjana Djaja', 1, 130500000000.000, 130500000000.000, 1, '2019-10-01', '2020-09-30', '2020-10-01', '2022-10-01', '1', 'DINAS BINA MARGA DKI JAKARTA', NULL, NULL, 2, 'Bridge', 3.00, '0', 0, 0, '0000-00-00 00:00:00', '2022-01-07 09:38:49', 1),
-	(30, '219007', 'Package A : Lot 6 Prigi - Bts. Kab. Tulung Agung - Klatak - Brumbun', 'Kab. Trenggalek - Kab. Tulungagung, Jawa Timur', '-8212140', '111782570', 'PROJECT SUPERVISION CONSULTANT (PSC) - 2', 1, 471553305416.000, 471553305416.000, 1, '2019-10-02', '2022-10-01', '2022-10-02', '2023-10-02', '3', 'Direktorat Jenderal Bima Marga, Balai Besar Pelaksanaan Jalan Nasional VIII, Satuan Kerja Wilayah II Provinsi Jawa Timur', '17,78 km', 'Contract Number : PW.01.03/Bb8/W.II-P2.5/181\nContract Dated     : 6 February 2020\nCOW                       : On-Progress', 2, 'Access Road', 0.00, '1', 0, 0, '0000-00-00 00:00:00', '2020-11-02 16:43:50', 1),
-	(31, '219008', 'LOT 7 - Bts Kab. Tulung Agung - Bts Kab. Malang', 'Kabupaten Blitar, Jawa Timur', '-8.1308657', '112.2200091', 'x', 1, 248811084188.000, 248811084188.000, 1, '2019-10-02', '2022-03-20', '2022-03-21', '2023-03-21', '3', 'Kementrian PUPERA', NULL, NULL, 2, 'Access Road', 0.00, '1', 0, 0, '0000-00-00 00:00:00', '2020-11-02 16:33:54', 1),
-	(35, '219009', 'Jalan Tol Semarang - Demak', 'Demak', '6°53\'33.83"S', '110°38\'15.97"E', 'PT VIRAMA KARYA', 1, 3.000, 3.000, 1, '2019-12-19', '2022-03-27', '2022-03-28', '2025-03-27', '5', 'PTPP Semarang Demak', '13.8 KM', 'MAIN ROAD DAN 1 INTERCHANGE DEMAK', 2, 'Highway', 3.00, '1', 0, 1, '2021-06-04 07:29:45', '2022-01-12 10:55:25', 1),
-	(36, '218301', 'Access Road Works under Patimban Port Development Project (I)', 'Patimban, Kab. Subang, Prov Jawa Barat', '-6,290272', '107,789102', 'Katahira & Engineer in Joint Venture with Nippon Engineering Consultant Co.Ltd. In Association with PT. Perentjana Djaja, PT. Sarana Multi Daya, PT. Parama Karya Mandiri, PT. Mekaro Daya Mandiri and PT. Maratama Cipta Mandiri', 1, 222527597711.000, 222527597711.000, 1, '2018-08-14', '2020-01-26', '2020-01-27', '2022-01-26', '2', 'Direktorat Jenderal Bima Marga, Kementrian Pekerjaan Umum', '8,2km', NULL, 1, 'Access Road', 3.00, '0', 0, 0, '0000-00-00 00:00:00', '2022-01-27 10:06:44', 1),
-	(37, '281571', 'Jembatan Teluk Kendari (MYC)', 'Sulawesi Tenggara, Kota Kendari, Teluk Kendari', '3°58\'34.84"S', '122°35\'12.05"E', 'x', 1, 662901485582.000, 728097153167.000, 1, '2015-12-10', '2020-01-31', '2020-01-01', '2022-12-31', '2', 'KEMENTERIAN PUPR,DIRJEN BINA MARGA,BPJN XXI-KDI,SATKER PJN WIL II-SULTRA', '1348.47 m', 'Cablestayed Bridge Construction', 1, 'Bridge', 3.00, '0', 0, 0, '0000-00-00 00:00:00', '2022-01-27 10:07:37', 1),
-	(38, '220321', 'Jalan Celikah - Kayu Agung - Bts. Kota Kayu Agung - Sp. Penyandingan - Bts. Lampung (PN)', 'Jalan Lintas Timur, Ogan Komering Ilir,   Sumatera Selatan', '104,8859', '-3,85809', 'x', 1, 18179636499700.000, 18179636499700.000, 1, '2019-12-30', '2021-01-01', '2021-01-02', '2022-01-02', '2', 'PPK 3.5 Provinsi Sumatera Selatan', NULL, NULL, 1, 'Access Road', 3.00, '0', 0, 0, '0000-00-00 00:00:00', '2022-01-27 09:50:05', 1),
-	(39, '220322', 'Pembangunan Jalan Tol Probolinggo Banyuwangi Paket 3', 'Paiton, Probolinggo, Jawa Timur', '7°43\'13.64"S', '113°29\'23.07"E', 'x', 1, 956323235200.000, 956323235200.000, 1, '2020-01-06', '2022-01-05', '2020-01-06', '2025-01-06', '5', 'PT. Jasamarga Probolinggo Banyuwangi', NULL, NULL, 1, 'Highway', 3.00, '0', 0, 0, '0000-00-00 00:00:00', '2022-01-27 09:49:26', 1),
-	(40, 'I12001', 'Bandara Nabire', '-', NULL, NULL, '-', 1, 0.000, 0.000, 1, '2020-01-01', '2020-12-31', '2021-01-01', '2021-12-31', '2', '-', NULL, NULL, 2, NULL, NULL, '2', 0, 0, '0000-00-00 00:00:00', '2020-03-06 11:14:02', 1),
-	(41, 'I12004', 'Overlay Bandara Hang Nadim Batam', '-', NULL, NULL, '-', 1, 0.000, 0.000, 1, '2020-03-01', '2020-03-06', '2020-03-01', '2020-03-06', '2', '-', NULL, NULL, 2, NULL, NULL, '2', 0, 0, '0000-00-00 00:00:00', '2020-03-06 10:55:33', 1),
-	(42, 'I12005', 'Jembatan Ploso, Jombang', '-', NULL, NULL, '-', 1, 0.000, 0.000, 1, '2020-03-01', '2020-03-06', '2020-03-01', '2020-03-06', '1', '-', NULL, NULL, 2, NULL, NULL, '2', 0, 0, '0000-00-00 00:00:00', '2020-03-06 11:05:44', 1),
-	(43, 'I12007', 'Jembatan Kali Bian, Merauke', '-', NULL, NULL, '-', 1, 0.000, 0.000, 1, '2020-03-01', '2020-03-06', '2020-03-01', '2020-03-06', '1', '-', NULL, NULL, 2, NULL, NULL, '2', 0, 0, '0000-00-00 00:00:00', '2020-03-06 11:27:40', 1),
-	(44, 'I12009', 'Ruas Dalam Kota Palu', '-', NULL, NULL, '-', 1, 0.000, 0.000, 1, '2020-03-01', '2020-03-06', '2020-03-01', '2020-03-06', '1', '-', NULL, NULL, 2, NULL, NULL, '2', 0, 0, '0000-00-00 00:00:00', '2020-03-06 11:28:39', 1),
-	(45, 'I12011', 'Jembatan Kretek', '-', NULL, NULL, 'x', 1, 0.000, 0.000, 1, '2020-03-01', '2020-03-06', '2020-03-01', '2020-03-06', '2', '-', NULL, NULL, 2, NULL, NULL, '2', 0, 0, '0000-00-00 00:00:00', '2020-03-06 11:29:40', 1),
-	(46, 'I12012', 'Tol Bengkulu - Curup - Lubuk Linggau', '-', NULL, NULL, 'x', 1, 0.000, 0.000, 1, '2020-03-01', '2020-03-06', '2020-03-01', '2020-03-06', '5', '-', NULL, NULL, 2, NULL, NULL, '2', 0, 0, '0000-00-00 00:00:00', '2020-03-06 11:30:40', 1),
-	(47, 'I12013', 'Runway 2 Bandara Sepinggan (3000M)', '-', NULL, NULL, 'x', 1, 0.000, 0.000, 1, '2020-03-01', '2020-03-06', '2020-03-01', '2020-03-06', '4', '-', NULL, NULL, 2, NULL, NULL, '2', 0, 0, '0000-00-00 00:00:00', '2020-03-06 11:31:28', 1),
-	(48, 'I12014', 'Fly Over Sunter', '-', NULL, NULL, 'x', 1, 0.000, 0.000, 1, '2020-03-01', '2020-03-06', '2020-03-01', '2020-03-06', '1', '-', NULL, NULL, 2, NULL, NULL, '2', 0, 0, '0000-00-00 00:00:00', '2020-03-06 11:34:45', 1),
-	(49, 'I12016', 'Jembatan Empat Lawang', '-', NULL, NULL, 'x', 1, 0.000, 0.000, 1, '2020-03-01', '2020-03-06', '2020-03-01', '2020-03-06', '2', '-', NULL, NULL, 2, NULL, NULL, '2', 0, 0, '0000-00-00 00:00:00', '2020-03-06 11:35:26', 1),
-	(50, 'I12017', 'Tol Bawen - Yogya', '-', NULL, NULL, 'x', 1, 0.000, 0.000, 1, '2020-03-01', '2020-03-06', '2020-03-01', '2020-03-06', '5', '-', NULL, NULL, 2, NULL, NULL, '2', 0, 0, '0000-00-00 00:00:00', '2020-03-06 11:36:29', 1),
-	(51, 'I12018', 'Tol Malang Kepanjen', '-', NULL, NULL, 'x', 1, 0.000, 0.000, 1, '2020-03-01', '2020-03-06', '2020-03-01', '2020-03-06', '5', '-', NULL, NULL, 2, NULL, NULL, '2', 0, 0, '0000-00-00 00:00:00', '2020-03-06 11:37:13', 1),
-	(52, 'I12019', 'Tol Semanan - Balaraja', '-', NULL, NULL, 'x', 1, 0.000, 0.000, 1, '2020-03-01', '2020-03-06', '2020-03-01', '2020-03-06', '5', '-', NULL, NULL, 2, NULL, NULL, '2', 0, 0, '0000-00-00 00:00:00', '2020-03-06 13:53:49', 1),
-	(53, 'I12002', 'Jalan Kendari - Toronipa Tahap 2', '-', NULL, NULL, 'x', 1, 0.000, 0.000, 1, '2020-03-01', '2020-03-06', '2020-03-01', '2020-03-06', '1', '-', NULL, NULL, 1, NULL, NULL, '2', 0, 0, '0000-00-00 00:00:00', '2020-03-06 13:54:49', 1),
-	(54, 'I12003', 'Jalan Bandara Lombok - Kuta Mandalika', '-', NULL, NULL, 'x', 1, 0.000, 0.000, 1, '2020-03-01', '2020-03-06', '2020-03-01', '2020-03-06', '2', '-', NULL, NULL, 1, NULL, NULL, '2', 0, 0, '0000-00-00 00:00:00', '2020-03-06 13:59:08', 1),
-	(55, 'I12006', 'Tol Semarang - Demak Seksi 1', '-', NULL, NULL, 'x', 1, 0.000, 0.000, 1, '2020-03-01', '2020-03-06', '2020-03-01', '2020-03-06', '2', '-', NULL, NULL, 1, NULL, NULL, '2', 0, 0, '0000-00-00 00:00:00', '2020-03-06 13:59:58', 1),
-	(56, 'I12008', 'Infrastruktur Kawasan Mandalika Paket 1', '-', NULL, NULL, 'x', 1, 0.000, 0.000, 1, '2020-03-01', '2020-03-06', '2020-03-01', '2020-03-06', '2', '-', NULL, NULL, 1, NULL, NULL, '2', 0, 0, '0000-00-00 00:00:00', '2020-03-06 14:00:45', 1),
-	(57, 'I12010', 'Private Airpot At East Java (Air Side)', '-', NULL, NULL, 'x', 1, 0.000, 0.000, 1, '2020-03-01', '2020-03-06', '2020-03-01', '2020-03-06', '5', '-', NULL, NULL, 1, NULL, NULL, '2', 0, 0, '0000-00-00 00:00:00', '2020-03-06 14:01:58', 1),
-	(58, 'I12015', 'Infrastruktur RSI Singkawang', '-', NULL, NULL, 'x', 1, 0.000, 0.000, 1, '2020-03-01', '2020-03-06', '2020-03-01', '2020-03-06', '2', '-', NULL, NULL, 1, NULL, NULL, '2', 0, 0, '0000-00-00 00:00:00', '2020-03-06 14:03:16', 1),
-	(59, '311573', 'TOL SOKER LOAN CHINA  1', 'Kabupaten Nganjuk, Provinsi Jawa Timur', '-7.597794', '111.904775', 'x', 1, 432647672130.000, 446210689235.000, 1, '2020-03-01', '2020-03-26', '2020-03-01', '2020-03-26', '3', '-', NULL, NULL, 1, 'Highway', 0.30, '0', 0, 1, '2021-12-14 20:50:57', '2022-01-27 09:49:00', 1),
-	(60, '220011', 'Pembangunan Mandalika Internasional Street Race Circuit', 'Desa Kuta, Kecaatan Pujut, Kabupaten Lombo Tengah', '-8.894678', '116.306742', '.', 1, 823998918182.000, 823998918182.000, 3, '2020-07-15', '2021-06-30', '2021-07-01', '2022-07-01', '4', 'PT. Pengembangan Pariwisata Indonesia / Indonesia Tourism Development Corporation (ITDC)', '4,4 Km', NULL, 2, 'Highway', 3.00, '1', 0, 0, '0000-00-00 00:00:00', '2020-08-25 13:39:40', 1),
-	(61, '220323', 'Pembangunan Jalan Kendari Toronipa II', 'Soropia, Kabupaten Konawe, Sulawesi Tenggara', NULL, NULL, '-', 1, 688089295455.000, 688089295455.000, 1, '2020-07-29', '2022-02-13', '2022-02-14', '2022-08-12', '1', 'Dinas SDA dan Bina Marga Pemerintah Provinsi Sulawesi Tenggara', '11.144 KM', 'Jalan Perkerasan Rigid Pavement Lebar 2 x 4M (Median 2 M)\nJembatan 1 634.84 M (PCI Girder  & Slab on Pile\nJembatan 2 40.00 M ( Slab on Pile)\nJembatan 3 240.00 M (Slab on Pile & London Bridge)', 1, 'Access Road', 3.00, '1', 0, 0, '0000-00-00 00:00:00', '2020-08-31 14:10:47', 1),
-	(62, '220014', 'Pembangunan Jalan Akses Tol Bandara Internasional Jawa Barat Paket 1', 'Blok Minggu RT.006 / RW.003 Desa Bantarjati, Kec. Kertajati', '', '', 'PT Mitrapacific Consulindo International', 1, 190909090909.000, 0.000, 1, '2020-09-28', '2021-07-30', '2021-07-31', '2023-07-31', '5', 'PT. Lintas Marga Sedaya', '1.85 km', NULL, 2, 'Access Road', 5.73, '0', 0, 1, '2021-12-01 10:55:19', '2022-01-27 10:11:18', 1),
-	(63, '220015', 'Pembangunan Kawasan Industri Terpadu Batang', 'Kantor PT.PP KIT-Batang (Depan masjid), Desa ketanggan RT 06 RW 02 Kec. Gringsing Kab. Batang, Jawa Tengah', '6°56\'23.03"S', '109°58\'2.98"E', 'PT. Maratama Cipta Mandiri', 1, 480828102087.000, 0.000, 1, '2020-09-14', '2021-04-30', '2021-05-01', '2021-10-28', '5', 'Konsorsium Kawasan Industri Terpadu Batang', '450 Ha', 'Pematangan Lahan', 2, 'Infrastructure Facilities', 3.00, '1', 0, 0, '0000-00-00 00:00:00', '2022-01-07 09:32:04', 1),
-	(64, '220018', 'Fly Over Kopo', 'Jl. Soekarno Hatta, Babakan Ciparay, Kota Bandung, Jawa Barat', '6°56\'26.96"S', '107°34\'55.26"E', 'PT. Perentjana Jaja', 1, 238766378010.000, 238766378010.000, 1, '2020-11-13', '2022-09-03', '2022-09-04', '2024-09-03', '2', 'Pejabat Pembuat Komotmen 4.5 Provinsi Jawa Barat', '1,7 km', NULL, 2, 'Bridge', 9999.99, '1', 0, 1, '2021-07-05 11:24:43', '2022-01-07 10:24:47', 1),
-	(65, '220325', 'I.1B Pembangunan Jalan KIT Batang (JO)', 'Kantor PT.PP KIT-Batang (Depan masjid), Desa ketanggan RT 06 RW 02 Kec. Gringsing Kab. Batang, Jawa Tengah', '-6.926531799999999', '109.9523227', 'PT. Perentjana Djaja KSO, PT. Jakarta Rencana Selaras, PT Widha', 1, 103838838000.000, 103838838000.000, 1, '2020-12-22', '2021-06-20', '2021-06-21', '2022-06-21', '1', 'Pejabat Pembuat Komitmen 1.3 Prov Jateng', NULL, NULL, 1, 'Access Road', 3.00, '1', 0, 0, '0000-00-00 00:00:00', '2021-02-01 11:19:02', 1),
-	(66, '220324', 'Pekerjaan Fasilitas Sisi Udara Bandar Udara Siboru Fakfak', 'Desa Siboru, District Wartutin, Kab Fakfak', '-2.8906421', '132.1473903', 'PT Ciriajasa Cipta Mandiri', 1, 364309149727.000, 364309149727.000, 4, '2020-11-27', '2022-12-16', '2022-12-17', '2023-12-16', '2', 'Kementrian Perhubungan, Direktorat Perhubungan Udara', '1600 m', 'Runway, Apron, Taxyway, GSE dan RESA', 1, 'Airport Infrastructure', 3.00, '1', 0, 0, '0000-00-00 00:00:00', '2021-04-27 15:20:09', 122),
-	(69, '221322', 'Paket I.4 - Pembangunanan Jalan KIT Batang', 'Kab. Batang, Jawa Tengah', NULL, NULL, '-', 1, 560468526551.000, 560468526551.000, 1, '2021-05-31', '2021-12-31', '2022-01-01', '2022-12-31', '2', 'Kementerian PUPR PPK 1.6 Provinsi Jawa Tengah', '19.17 km', 'JO\nPT. PP (Persero)Tbk : 62,5%\nPT. Markinah : 20%\nPT. Satria Buana Pamula Sakti : 17,5%', 1, 'Access Road', 9999.99, '1', 0, 0, '0000-00-00 00:00:00', '2021-07-06 07:56:12', 1),
-	(70, '221041', 'Proyek Jembatan Bogeg dan FO KA Bogeg, Serang, Banten', 'Jl. Syekh Moh. Nawawi Albantani, Banjaragung, Kec. Cipocok Jaya, Kota Serang, Banten', NULL, NULL, '-', 1, 180764527776.000, 149929469431.000, 4, '2021-05-04', '2021-12-29', '2021-12-30', '2022-12-29', '1', 'Dinas PUPR Pemerintah Provinsi Banten', '80 m', NULL, 2, 'Bridge', 9999.99, '1', 0, 1, '2022-01-27 10:23:47', '2021-12-03 13:55:47', 1),
-	(71, '221042', 'Pekerjaan Konstruksi Juction Dawuan Pada Jalan Tol CISUMDAWU', 'Akses Tol Cisumdawu, Kecamatan Kertajati, Majalengka, Jawa Barat', NULL, NULL, 'PT. Multi Phi Beta KSO', 1, 750000000000.000, 750000000000.000, 1, '2021-05-11', '2022-01-06', '2022-01-07', '2023-01-07', '5', 'PT. Citra Karya Jabar Tol', NULL, NULL, 2, 'Interchange', 9999.99, '1', 0, 0, '0000-00-00 00:00:00', '2021-12-08 12:54:01', 1),
-	(72, '221043', 'Pekerjaan Overlay Runway Tapering Stopway Peningkatan Fasilitas Mengakomodir A330 dan Pemenuhan Fasilitas Sisi Udara Tahap 1 di Bandara Sentani Jayapura', 'Jl. Bandara Sentani , Kel. Sentani, Kec. Sentani, Jayapura, Papua', '2°34\'32.05"S', '140°30\'52.87"E', 'PT. Ciriajasa Cipta Mandiri', 1, 91363636364.000, 91363636364.000, 4, '2021-05-07', '2022-05-02', '2022-05-03', '2023-04-28', '4', 'PT. ANGKASA PURA I (Persero)', '1400 m\'', NULL, 2, 'Airport Infrastructure', 9999.99, '1', 0, 0, '0000-00-00 00:00:00', '2022-01-12 09:10:37', 1),
-	(73, '221044', 'Infrastruktur Dasar Revitalisasi Kawasan GIBB di Sanur', 'Jl. Hang Tuah, Sanur, Kota Denpasar Selatan, Prov. Bali', '-8.674356', '115.253930', 'Virama Karya dan ITDC', 1, 263004176090.000, 263004176090.000, 3, '2021-10-18', '2022-10-17', '2022-10-18', '2023-10-18', '4', 'PT. HOTEL INDONESIA NATOUR (PERSERO)', NULL, NULL, 2, 'Access Road', 9999.99, '1', 0, 0, '0000-00-00 00:00:00', '2022-01-12 11:16:08', 1),
-	(74, '221321', 'Mandalika Urban and Tourism Infrastructure Project (MUTIP)', 'Desa Kuta, Kecamatan Pujut, Lombok Tengah, Nusa Tenggara Barat ( NTB )', '-8.870030', '116.307436', 'Perencanaan Jaya', 1, 854895681818.000, 854895681818.000, 1, '2021-03-03', '2023-03-03', '2023-03-04', '2024-03-03', '4', 'PT. PPI (Persero)/ ITDC', NULL, NULL, 1, 'Access Road', 9999.99, '1', 0, 1, '2022-01-06 17:26:55', '2022-01-12 11:13:56', 1),
-	(75, '221045', 'Proyek Kawasan Bank Indonesia Karawang', 'Kawasan BI Karawang', '-6.374156', '107.301583', 'KSO Egis - Yodya', 1, 438100180000.000, 438100180000.000, 2, '2021-12-01', '2021-12-27', '2021-12-01', '2021-12-27', '2', 'Bank Indonesia', '1,825 km', NULL, 2, 'Access Road', 9999.99, '1', 0, 0, '0000-00-00 00:00:00', '2022-01-12 11:10:08', 1),
-	(76, '222001', 'Pelebaran Jalan Kuta Kawasan Mandalika', 'Desa Kuta, Kecamatan Pujut, Lombok Tengah, Nusa Tenggara Barat ( NTB )', '', '', 'PT Indah Karya', 1, 123280000000.000, 123280000000.000, 1, '2022-01-30', '2022-10-27', '2022-10-28', '2023-10-28', '2', 'Kementrian PUPR Ditjen Bina Marga', NULL, NULL, 2, 'Access Road', 9999.99, '1', 0, 0, '0000-00-00 00:00:00', '2022-01-27 09:55:08', 1),
-	(77, '222002', 'Penataan Kawasan Mandalika', 'Desa Kuta, Kecamatan Pujut, Lombok Tengah, Nusa Tenggara Barat ( NTB )', '', '', 'PT. Yodya Karya', 1, 80909090909.000, 80909090909.000, 1, '2022-03-10', '2022-10-28', '2022-10-29', '2023-10-29', '2', 'Kementrian PUPR Ditejen Cipta Karya', NULL, NULL, 2, 'Access Road', 9999.99, '1', 0, 0, '0000-00-00 00:00:00', '2022-01-27 09:54:56', 1),
-	(78, '221323', 'Pekerjaan Faslitas Sisi Darat Bandar Udara Siboru Fakfak', 'Desa Siboru, Distrik Warturin', '', '', 'Ciriajasa Cipta Mandiri', 1, 219.000, 219.000, 1, '2021-11-18', '2022-12-31', '2023-01-01', '2023-12-31', '2', 'Kementerian Perhubungan', NULL, NULL, 1, 'Airport Infrastructure', 3.00, '1', 0, 0, '0000-00-00 00:00:00', '2022-01-27 16:20:09', 1);
+INSERT INTO `mproyek` (`id`, `kode_proyek`, `nama_proyek`, `lokasi`, `latitude`, `longitude`, `konsultan`, `currency_id`, `nilai_kontrak`, `nilai_kontrak_add`, `jenis_kontrak_id`, `periode_start_date`, `periode_end_date`, `masa_pemeliharaan_start`, `masa_pemeliharaan_end`, `sumber_dana`, `owner`, `panjang_efektif`, `keterangan`, `tipe_projek`, `tipe_bangunan`, `pph_final`, `status`, `finish`, `oss_bucket_created`, `oss_bucket_created_at`, `created_at`, `created_by`, `status_lock`) VALUES
+	(13, '251610', 'Jalan Tol Pandaan Malang', 'Jl. Raya Parelegi no. 8A, Kec. Purwodadi, Kab. Malang', '-7.937177', '112.652851', 'PT Virama Karya', 1, 3810950727273.000, 4016824748933.000, 1, '2016-11-08', '2020-01-31', '2020-01-31', '2023-01-30', '5', 'PT Jasamarga Pandaan Malang', '38,438 Km', NULL, 2, 'Highway', 3.00, '0', 0, 0, '0000-00-00 00:00:00', '2021-12-14 14:36:43', 1, 'N'),
+	(14, '281603', 'Jalan Tol Manado - Bitung', 'Jl. Tumi\'deng Desa Paslaten Kecamatan Kauditan', '1,4106', '125,105', 'KSO Buana Mabit', 1, 2879036063017.000, 2879036063017.000, 1, '2017-08-04', '2021-03-29', '2021-03-30', '2024-03-28', '5', 'PT. Jasa Marga Manado Bitung', '25,756 Km', 'Add 8 23 Maret 2020 ; Add Waktu dan CCO', 2, 'Highway', 3.00, '1', 0, 0, '0000-00-00 00:00:00', '2020-11-03 08:56:34', 1, 'N'),
+	(15, '217008', 'Simpang Susun Tol Serang - Panimbang', 'Serang, Provinsi Banten', '106,182901', '-6.338779', 'PT. Jaya CM KSO', 1, 536212739581.000, 536212739581.000, 1, '2018-03-05', '2020-03-05', '2020-03-06', '2023-03-06', '5', 'PT. Wijaya Karya Serang Panimbang', NULL, NULL, 2, 'Interchange', 3.00, '1', 0, 1, '2021-12-16 05:27:15', '2020-11-02 16:45:39', 1, 'N'),
+	(16, '218001', 'Peningkatan Jalan dan Penanganan Longsor Access Road PLTA Upper Cisokan', 'Desa Sarinagen, Desa Sirnagalih, Desa Cijambu (Kecamatan Cipongkor), Desa Cibitung,', '', '', 'PLN Enjiniring', 1, 453969515117.000, 454263776807.000, 1, '2018-03-29', '2020-02-17', '2020-12-31', '2021-06-29', '4', 'PT. PLN (Persero) Unit Induk Pembangunan Jawa Bagian Tengah I', NULL, NULL, 2, 'Access Road', 3.00, '0', 0, 0, '0000-00-00 00:00:00', '2022-01-27 10:09:14', 1, 'N'),
+	(18, '218002', 'Jembatan Penghubung PIK', 'Pantai Indah Kapuk, Jakarta Utara', '92774.668', '9325140.502', 'PT. Jakarta Rencana Selaras', 0, 193988978181.000, 193988978181.000, NULL, '2018-05-21', '2019-12-15', '2019-12-16', '2020-12-15', '5', 'PT Kapuknaga Indah', NULL, NULL, 2, 'Bridge', 3.00, '0', 0, 0, '0000-00-00 00:00:00', '2022-01-27 09:56:05', 1, 'N'),
+	(19, '218003', 'Runway 3 Bandara Soekarno Hatta Section 1', 'Jl. Perimeter Utara Pos 25, Pajang, Benda, Tangerang', '106,644573218725', '-6,11392280105364', 'PT. Ciriajasa Cipta Mandiri', 1, 1145734666000.000, 1213007393003.000, 4, '2018-05-14', '2019-11-28', '2019-12-01', '2019-12-10', '4', 'PT. Angkasa Pura II (Persero)', NULL, NULL, 2, 'Airport Infrastructure', 3.00, '0', 0, 0, '0000-00-00 00:00:00', '2022-01-07 09:35:32', 1, 'N'),
+	(20, '218007', 'Simpang Susun Sentul Selatan', 'Jl Tol Jagorawi - Jl Tol Bogor Outer Ring Road', '-6.5620708', '106.8078766', 'PT Indec Internusa', 1, 166.000, 183403017273.000, 1, '2019-01-29', '2020-04-28', '2020-04-29', '2021-04-28', '4', 'PT Jasa Marga (Persero) Tbk', NULL, NULL, 2, 'Interchange', 3.00, '0', 0, 0, '0000-00-00 00:00:00', '2022-01-27 09:57:22', 1, 'N'),
+	(21, '219001', 'Jalan Tol Bogor Ring Road Seksi IIIA', 'Jalan Soleh Iskandar – Kecamatan Tanah Sareal, Kota Bogor', '-6,54447368', '106,77482204', 'PT Indec Internusa KSO PT Eskapindo Matra', 1, 1249659091262.000, 1249659091262.000, 2, '2018-12-21', '2020-12-31', '2021-01-01', '2021-01-01', '4', 'PT Marga Sarana Jabar', NULL, NULL, 2, 'Highway', 3.00, '0', 0, 0, '0000-00-00 00:00:00', '2022-01-27 09:58:04', 1, 'N'),
+	(26, '219002', 'Jalan Tol Indrapura - Kisaran', 'Indrapura, Sumatera Utara', '364741.08 ', '538760.80 ', 'PT Virama Karya', 1, 3674271818181.000, 3674271818181.000, 1, '2018-12-20', '2020-12-18', '2020-12-19', '2022-12-18', '5', 'PT Hutama Karya', NULL, NULL, 2, 'Highway', 3.00, '1', 0, 1, '2021-07-05 11:19:11', '2020-11-02 16:42:34', 1, 'N'),
+	(27, '219003', 'Rest Area Tol Bakauheni', 'Kalianda, Lampung Selatan', '105,5807128', '-5,6805845', 'PT. Cipta Strada', 1, 235981839069.000, 243834552605.000, 1, '2019-07-01', '2020-03-31', '2020-04-01', '2022-03-31', '4', 'PT. Hutama Karya (Persero)', '2 Titik (Kanan Kiri)', '', 2, 'Infrastructure Facilities', 3.00, '0', 0, 0, '0000-00-00 00:00:00', '2022-01-27 10:05:25', 1, 'N'),
+	(28, '219006', 'Pembangunan STS Lenteng Agung - IISIP', 'Jl Raya Lenteng Agung, Kecamatan Jagakarsa', '106.835088', '-6.323352', 'PT.Perentjana Djaja', 1, 130500000000.000, 130500000000.000, 1, '2019-10-01', '2020-09-30', '2020-10-01', '2022-10-01', '1', 'DINAS BINA MARGA DKI JAKARTA', NULL, NULL, 2, 'Bridge', 3.00, '0', 0, 0, '0000-00-00 00:00:00', '2022-01-07 09:38:49', 1, 'N'),
+	(30, '219007', 'Package A : Lot 6 Prigi - Bts. Kab. Tulung Agung - Klatak - Brumbun', 'Kab. Trenggalek - Kab. Tulungagung, Jawa Timur', '-8212140', '111782570', 'PROJECT SUPERVISION CONSULTANT (PSC) - 2', 1, 471553305416.000, 471553305416.000, 1, '2019-10-02', '2022-10-01', '2022-10-02', '2023-10-02', '3', 'Direktorat Jenderal Bima Marga, Balai Besar Pelaksanaan Jalan Nasional VIII, Satuan Kerja Wilayah II Provinsi Jawa Timur', '17,78 km', 'Contract Number : PW.01.03/Bb8/W.II-P2.5/181\nContract Dated     : 6 February 2020\nCOW                       : On-Progress', 2, 'Access Road', 0.00, '1', 0, 0, '0000-00-00 00:00:00', '2020-11-02 16:43:50', 1, 'N'),
+	(31, '219008', 'LOT 7 - Bts Kab. Tulung Agung - Bts Kab. Malang', 'Kabupaten Blitar, Jawa Timur', '-8.1308657', '112.2200091', 'x', 1, 248811084188.000, 248811084188.000, 1, '2019-10-02', '2022-03-20', '2022-03-21', '2023-03-21', '3', 'Kementrian PUPERA', NULL, NULL, 2, 'Access Road', 0.00, '1', 0, 0, '0000-00-00 00:00:00', '2020-11-02 16:33:54', 1, 'N'),
+	(35, '219009', 'Jalan Tol Semarang - Demak', 'Demak', '6°53\'33.83"S', '110°38\'15.97"E', 'PT VIRAMA KARYA', 1, 3.000, 3.000, 1, '2019-12-19', '2022-03-27', '2022-03-28', '2025-03-27', '5', 'PTPP Semarang Demak', '13.8 KM', 'MAIN ROAD DAN 1 INTERCHANGE DEMAK', 2, 'Highway', 3.00, '1', 0, 1, '2021-06-04 07:29:45', '2022-01-12 10:55:25', 1, 'N'),
+	(36, '218301', 'Access Road Works under Patimban Port Development Project (I)', 'Patimban, Kab. Subang, Prov Jawa Barat', '-6,290272', '107,789102', 'Katahira & Engineer in Joint Venture with Nippon Engineering Consultant Co.Ltd. In Association with PT. Perentjana Djaja, PT. Sarana Multi Daya, PT. Parama Karya Mandiri, PT. Mekaro Daya Mandiri and PT. Maratama Cipta Mandiri', 1, 222527597711.000, 222527597711.000, 1, '2018-08-14', '2020-01-26', '2020-01-27', '2022-01-26', '2', 'Direktorat Jenderal Bima Marga, Kementrian Pekerjaan Umum', '8,2km', NULL, 1, 'Access Road', 3.00, '0', 0, 0, '0000-00-00 00:00:00', '2022-01-27 10:06:44', 1, 'N'),
+	(37, '281571', 'Jembatan Teluk Kendari (MYC)', 'Sulawesi Tenggara, Kota Kendari, Teluk Kendari', '3°58\'34.84"S', '122°35\'12.05"E', 'x', 1, 662901485582.000, 728097153167.000, 1, '2015-12-10', '2020-01-31', '2020-01-01', '2022-12-31', '2', 'KEMENTERIAN PUPR,DIRJEN BINA MARGA,BPJN XXI-KDI,SATKER PJN WIL II-SULTRA', '1348.47 m', 'Cablestayed Bridge Construction', 1, 'Bridge', 3.00, '0', 0, 0, '0000-00-00 00:00:00', '2022-01-27 10:07:37', 1, 'N'),
+	(38, '220321', 'Jalan Celikah - Kayu Agung - Bts. Kota Kayu Agung - Sp. Penyandingan - Bts. Lampung (PN)', 'Jalan Lintas Timur, Ogan Komering Ilir,   Sumatera Selatan', '104,8859', '-3,85809', 'x', 1, 18179636499700.000, 18179636499700.000, 1, '2019-12-30', '2021-01-01', '2021-01-02', '2022-01-02', '2', 'PPK 3.5 Provinsi Sumatera Selatan', NULL, NULL, 1, 'Access Road', 3.00, '0', 0, 0, '0000-00-00 00:00:00', '2022-01-27 09:50:05', 1, 'N'),
+	(39, '220322', 'Pembangunan Jalan Tol Probolinggo Banyuwangi Paket 3', 'Paiton, Probolinggo, Jawa Timur', '7°43\'13.64"S', '113°29\'23.07"E', 'x', 1, 956323235200.000, 956323235200.000, 1, '2020-01-06', '2022-01-05', '2020-01-06', '2025-01-06', '5', 'PT. Jasamarga Probolinggo Banyuwangi', NULL, NULL, 1, 'Highway', 3.00, '0', 0, 0, '0000-00-00 00:00:00', '2022-01-27 09:49:26', 1, 'N'),
+	(40, 'I12001', 'Bandara Nabire', '-', NULL, NULL, '-', 1, 0.000, 0.000, 1, '2020-01-01', '2020-12-31', '2021-01-01', '2021-12-31', '2', '-', NULL, NULL, 2, NULL, NULL, '2', 0, 0, '0000-00-00 00:00:00', '2020-03-06 11:14:02', 1, 'N'),
+	(41, 'I12004', 'Overlay Bandara Hang Nadim Batam', '-', NULL, NULL, '-', 1, 0.000, 0.000, 1, '2020-03-01', '2020-03-06', '2020-03-01', '2020-03-06', '2', '-', NULL, NULL, 2, NULL, NULL, '2', 0, 0, '0000-00-00 00:00:00', '2020-03-06 10:55:33', 1, 'N'),
+	(42, 'I12005', 'Jembatan Ploso, Jombang', '-', NULL, NULL, '-', 1, 0.000, 0.000, 1, '2020-03-01', '2020-03-06', '2020-03-01', '2020-03-06', '1', '-', NULL, NULL, 2, NULL, NULL, '2', 0, 0, '0000-00-00 00:00:00', '2020-03-06 11:05:44', 1, 'N'),
+	(43, 'I12007', 'Jembatan Kali Bian, Merauke', '-', NULL, NULL, '-', 1, 0.000, 0.000, 1, '2020-03-01', '2020-03-06', '2020-03-01', '2020-03-06', '1', '-', NULL, NULL, 2, NULL, NULL, '2', 0, 0, '0000-00-00 00:00:00', '2020-03-06 11:27:40', 1, 'N'),
+	(44, 'I12009', 'Ruas Dalam Kota Palu', '-', NULL, NULL, '-', 1, 0.000, 0.000, 1, '2020-03-01', '2020-03-06', '2020-03-01', '2020-03-06', '1', '-', NULL, NULL, 2, NULL, NULL, '2', 0, 0, '0000-00-00 00:00:00', '2020-03-06 11:28:39', 1, 'N'),
+	(45, 'I12011', 'Jembatan Kretek', '-', NULL, NULL, 'x', 1, 0.000, 0.000, 1, '2020-03-01', '2020-03-06', '2020-03-01', '2020-03-06', '2', '-', NULL, NULL, 2, NULL, NULL, '2', 0, 0, '0000-00-00 00:00:00', '2020-03-06 11:29:40', 1, 'N'),
+	(46, 'I12012', 'Tol Bengkulu - Curup - Lubuk Linggau', '-', NULL, NULL, 'x', 1, 0.000, 0.000, 1, '2020-03-01', '2020-03-06', '2020-03-01', '2020-03-06', '5', '-', NULL, NULL, 2, NULL, NULL, '2', 0, 0, '0000-00-00 00:00:00', '2020-03-06 11:30:40', 1, 'N'),
+	(47, 'I12013', 'Runway 2 Bandara Sepinggan (3000M)', '-', NULL, NULL, 'x', 1, 0.000, 0.000, 1, '2020-03-01', '2020-03-06', '2020-03-01', '2020-03-06', '4', '-', NULL, NULL, 2, NULL, NULL, '2', 0, 0, '0000-00-00 00:00:00', '2020-03-06 11:31:28', 1, 'N'),
+	(48, 'I12014', 'Fly Over Sunter', '-', NULL, NULL, 'x', 1, 0.000, 0.000, 1, '2020-03-01', '2020-03-06', '2020-03-01', '2020-03-06', '1', '-', NULL, NULL, 2, NULL, NULL, '2', 0, 0, '0000-00-00 00:00:00', '2020-03-06 11:34:45', 1, 'N'),
+	(49, 'I12016', 'Jembatan Empat Lawang', '-', NULL, NULL, 'x', 1, 0.000, 0.000, 1, '2020-03-01', '2020-03-06', '2020-03-01', '2020-03-06', '2', '-', NULL, NULL, 2, NULL, NULL, '2', 0, 0, '0000-00-00 00:00:00', '2020-03-06 11:35:26', 1, 'N'),
+	(50, 'I12017', 'Tol Bawen - Yogya', '-', NULL, NULL, 'x', 1, 0.000, 0.000, 1, '2020-03-01', '2020-03-06', '2020-03-01', '2020-03-06', '5', '-', NULL, NULL, 2, NULL, NULL, '2', 0, 0, '0000-00-00 00:00:00', '2020-03-06 11:36:29', 1, 'N'),
+	(51, 'I12018', 'Tol Malang Kepanjen', '-', NULL, NULL, 'x', 1, 0.000, 0.000, 1, '2020-03-01', '2020-03-06', '2020-03-01', '2020-03-06', '5', '-', NULL, NULL, 2, NULL, NULL, '2', 0, 0, '0000-00-00 00:00:00', '2020-03-06 11:37:13', 1, 'N'),
+	(52, 'I12019', 'Tol Semanan - Balaraja', '-', NULL, NULL, 'x', 1, 0.000, 0.000, 1, '2020-03-01', '2020-03-06', '2020-03-01', '2020-03-06', '5', '-', NULL, NULL, 2, NULL, NULL, '2', 0, 0, '0000-00-00 00:00:00', '2020-03-06 13:53:49', 1, 'N'),
+	(53, 'I12002', 'Jalan Kendari - Toronipa Tahap 2', '-', NULL, NULL, 'x', 1, 0.000, 0.000, 1, '2020-03-01', '2020-03-06', '2020-03-01', '2020-03-06', '1', '-', NULL, NULL, 1, NULL, NULL, '2', 0, 0, '0000-00-00 00:00:00', '2020-03-06 13:54:49', 1, 'N'),
+	(54, 'I12003', 'Jalan Bandara Lombok - Kuta Mandalika', '-', NULL, NULL, 'x', 1, 0.000, 0.000, 1, '2020-03-01', '2020-03-06', '2020-03-01', '2020-03-06', '2', '-', NULL, NULL, 1, NULL, NULL, '2', 0, 0, '0000-00-00 00:00:00', '2020-03-06 13:59:08', 1, 'N'),
+	(55, 'I12006', 'Tol Semarang - Demak Seksi 1', '-', NULL, NULL, 'x', 1, 0.000, 0.000, 1, '2020-03-01', '2020-03-06', '2020-03-01', '2020-03-06', '2', '-', NULL, NULL, 1, NULL, NULL, '2', 0, 0, '0000-00-00 00:00:00', '2020-03-06 13:59:58', 1, 'N'),
+	(56, 'I12008', 'Infrastruktur Kawasan Mandalika Paket 1', '-', NULL, NULL, 'x', 1, 0.000, 0.000, 1, '2020-03-01', '2020-03-06', '2020-03-01', '2020-03-06', '2', '-', NULL, NULL, 1, NULL, NULL, '2', 0, 0, '0000-00-00 00:00:00', '2020-03-06 14:00:45', 1, 'N'),
+	(57, 'I12010', 'Private Airpot At East Java (Air Side)', '-', NULL, NULL, 'x', 1, 0.000, 0.000, 1, '2020-03-01', '2020-03-06', '2020-03-01', '2020-03-06', '5', '-', NULL, NULL, 1, NULL, NULL, '2', 0, 0, '0000-00-00 00:00:00', '2020-03-06 14:01:58', 1, 'N'),
+	(58, 'I12015', 'Infrastruktur RSI Singkawang', '-', NULL, NULL, 'x', 1, 0.000, 0.000, 1, '2020-03-01', '2020-03-06', '2020-03-01', '2020-03-06', '2', '-', NULL, NULL, 1, NULL, NULL, '2', 0, 0, '0000-00-00 00:00:00', '2020-03-06 14:03:16', 1, 'N'),
+	(59, '311573', 'TOL SOKER LOAN CHINA  1', 'Kabupaten Nganjuk, Provinsi Jawa Timur', '-7.597794', '111.904775', 'x', 1, 432647672130.000, 446210689235.000, 1, '2020-03-01', '2020-03-26', '2020-03-01', '2020-03-26', '3', '-', NULL, NULL, 1, 'Highway', 0.30, '0', 0, 1, '2021-12-14 20:50:57', '2022-01-27 09:49:00', 1, 'N'),
+	(60, '220011', 'Pembangunan Mandalika Internasional Street Race Circuit', 'Desa Kuta, Kecaatan Pujut, Kabupaten Lombo Tengah', '-8.894678', '116.306742', '.', 1, 823998918182.000, 823998918182.000, 3, '2020-07-15', '2021-06-30', '2021-07-01', '2022-07-01', '4', 'PT. Pengembangan Pariwisata Indonesia / Indonesia Tourism Development Corporation (ITDC)', '4,4 Km', NULL, 2, 'Highway', 3.00, '1', 0, 0, '0000-00-00 00:00:00', '2020-08-25 13:39:40', 1, 'N'),
+	(61, '220323', 'Pembangunan Jalan Kendari Toronipa II', 'Soropia, Kabupaten Konawe, Sulawesi Tenggara', NULL, NULL, '-', 1, 688089295455.000, 688089295455.000, 1, '2020-07-29', '2022-02-13', '2022-02-14', '2022-08-12', '1', 'Dinas SDA dan Bina Marga Pemerintah Provinsi Sulawesi Tenggara', '11.144 KM', 'Jalan Perkerasan Rigid Pavement Lebar 2 x 4M (Median 2 M)\nJembatan 1 634.84 M (PCI Girder  & Slab on Pile\nJembatan 2 40.00 M ( Slab on Pile)\nJembatan 3 240.00 M (Slab on Pile & London Bridge)', 1, 'Access Road', 3.00, '1', 0, 0, '0000-00-00 00:00:00', '2020-08-31 14:10:47', 1, 'N'),
+	(62, '220014', 'Pembangunan Jalan Akses Tol Bandara Internasional Jawa Barat Paket 1', 'Blok Minggu RT.006 / RW.003 Desa Bantarjati, Kec. Kertajati', '', '', 'PT Mitrapacific Consulindo International', 1, 190909090909.000, 0.000, 1, '2020-09-28', '2021-07-30', '2021-07-31', '2023-07-31', '5', 'PT. Lintas Marga Sedaya', '1.85 km', NULL, 2, 'Access Road', 5.73, '0', 0, 1, '2021-12-01 10:55:19', '2022-01-27 10:11:18', 1, 'N'),
+	(63, '220015', 'Pembangunan Kawasan Industri Terpadu Batang', 'Kantor PT.PP KIT-Batang (Depan masjid), Desa ketanggan RT 06 RW 02 Kec. Gringsing Kab. Batang, Jawa Tengah', '6°56\'23.03"S', '109°58\'2.98"E', 'PT. Maratama Cipta Mandiri', 1, 480828102087.000, 0.000, 1, '2020-09-14', '2021-04-30', '2021-05-01', '2021-10-28', '5', 'Konsorsium Kawasan Industri Terpadu Batang', '450 Ha', 'Pematangan Lahan', 2, 'Infrastructure Facilities', 3.00, '1', 0, 0, '0000-00-00 00:00:00', '2022-01-07 09:32:04', 1, 'N'),
+	(64, '220018', 'Fly Over Kopo', 'Jl. Soekarno Hatta, Babakan Ciparay, Kota Bandung, Jawa Barat', '6°56\'26.96"S', '107°34\'55.26"E', 'PT. Perentjana Jaja', 1, 238766378010.000, 238766378010.000, 1, '2020-11-13', '2022-09-03', '2022-09-04', '2024-09-03', '2', 'Pejabat Pembuat Komotmen 4.5 Provinsi Jawa Barat', '1,7 km', NULL, 2, 'Bridge', 9999.99, '1', 0, 1, '2021-07-05 11:24:43', '2022-01-07 10:24:47', 1, 'N'),
+	(65, '220325', 'I.1B Pembangunan Jalan KIT Batang (JO)', 'Kantor PT.PP KIT-Batang (Depan masjid), Desa ketanggan RT 06 RW 02 Kec. Gringsing Kab. Batang, Jawa Tengah', '-6.926531799999999', '109.9523227', 'PT. Perentjana Djaja KSO, PT. Jakarta Rencana Selaras, PT Widha', 1, 103838838000.000, 103838838000.000, 1, '2020-12-22', '2021-06-20', '2021-06-21', '2022-06-21', '1', 'Pejabat Pembuat Komitmen 1.3 Prov Jateng', NULL, NULL, 1, 'Access Road', 3.00, '1', 0, 0, '0000-00-00 00:00:00', '2021-02-01 11:19:02', 1, 'N'),
+	(66, '220324', 'Pekerjaan Fasilitas Sisi Udara Bandar Udara Siboru Fakfak', 'Desa Siboru, District Wartutin, Kab Fakfak', '-2.8906421', '132.1473903', 'PT Ciriajasa Cipta Mandiri', 1, 364309149727.000, 364309149727.000, 4, '2020-11-27', '2022-12-16', '2022-12-17', '2023-12-16', '2', 'Kementrian Perhubungan, Direktorat Perhubungan Udara', '1600 m', 'Runway, Apron, Taxyway, GSE dan RESA', 1, 'Airport Infrastructure', 3.00, '1', 0, 0, '0000-00-00 00:00:00', '2021-04-27 15:20:09', 122, 'N'),
+	(69, '221322', 'Paket I.4 - Pembangunanan Jalan KIT Batang', 'Kab. Batang, Jawa Tengah', NULL, NULL, '-', 1, 560468526551.000, 560468526551.000, 1, '2021-05-31', '2021-12-31', '2022-01-01', '2022-12-31', '2', 'Kementerian PUPR PPK 1.6 Provinsi Jawa Tengah', '19.17 km', 'JO\nPT. PP (Persero)Tbk : 62,5%\nPT. Markinah : 20%\nPT. Satria Buana Pamula Sakti : 17,5%', 1, 'Access Road', 9999.99, '1', 0, 0, '0000-00-00 00:00:00', '2021-07-06 07:56:12', 1, 'N'),
+	(70, '221041', 'Proyek Jembatan Bogeg dan FO KA Bogeg, Serang, Banten', 'Jl. Syekh Moh. Nawawi Albantani, Banjaragung, Kec. Cipocok Jaya, Kota Serang, Banten', NULL, NULL, '-', 1, 180764527776.000, 149929469431.000, 4, '2021-05-04', '2021-12-29', '2021-12-30', '2022-12-29', '1', 'Dinas PUPR Pemerintah Provinsi Banten', '80 m', NULL, 2, 'Bridge', 9999.99, '1', 0, 1, '2022-01-27 10:23:47', '2021-12-03 13:55:47', 1, 'N'),
+	(71, '221042', 'Pekerjaan Konstruksi Juction Dawuan Pada Jalan Tol CISUMDAWU', 'Akses Tol Cisumdawu, Kecamatan Kertajati, Majalengka, Jawa Barat', NULL, NULL, 'PT. Multi Phi Beta KSO', 1, 750000000000.000, 750000000000.000, 1, '2021-05-11', '2022-01-06', '2022-01-07', '2023-01-07', '5', 'PT. Citra Karya Jabar Tol', NULL, NULL, 2, 'Interchange', 9999.99, '1', 0, 0, '0000-00-00 00:00:00', '2021-12-08 12:54:01', 1, 'N'),
+	(72, '221043', 'Pekerjaan Overlay Runway Tapering Stopway Peningkatan Fasilitas Mengakomodir A330 dan Pemenuhan Fasilitas Sisi Udara Tahap 1 di Bandara Sentani Jayapura', 'Jl. Bandara Sentani , Kel. Sentani, Kec. Sentani, Jayapura, Papua', '2°34\'32.05"S', '140°30\'52.87"E', 'PT. Ciriajasa Cipta Mandiri', 1, 91363636364.000, 91363636364.000, 4, '2021-05-07', '2022-05-02', '2022-05-03', '2023-04-28', '4', 'PT. ANGKASA PURA I (Persero)', '1400 m\'', NULL, 2, 'Airport Infrastructure', 9999.99, '1', 0, 0, '0000-00-00 00:00:00', '2022-01-12 09:10:37', 1, 'N'),
+	(73, '221044', 'Infrastruktur Dasar Revitalisasi Kawasan GIBB di Sanur', 'Jl. Hang Tuah, Sanur, Kota Denpasar Selatan, Prov. Bali', '-8.674356', '115.253930', 'Virama Karya dan ITDC', 1, 263004176090.000, 263004176090.000, 3, '2021-10-18', '2022-10-17', '2022-10-18', '2023-10-18', '4', 'PT. HOTEL INDONESIA NATOUR (PERSERO)', NULL, NULL, 2, 'Access Road', 9999.99, '1', 0, 0, '0000-00-00 00:00:00', '2022-01-12 11:16:08', 1, 'N'),
+	(74, '221321', 'Mandalika Urban and Tourism Infrastructure Project (MUTIP)', 'Desa Kuta, Kecamatan Pujut, Lombok Tengah, Nusa Tenggara Barat ( NTB )', '-8.870030', '116.307436', 'Perencanaan Jaya', 1, 854895681818.000, 854895681818.000, 1, '2021-03-03', '2023-03-03', '2023-03-04', '2024-03-03', '4', 'PT. PPI (Persero)/ ITDC', NULL, NULL, 1, 'Access Road', 9999.99, '1', 0, 1, '2022-01-06 17:26:55', '2022-01-12 11:13:56', 1, 'N'),
+	(75, '221045', 'Proyek Kawasan Bank Indonesia Karawang', 'Kawasan BI Karawang', '-6.374156', '107.301583', 'KSO Egis - Yodya', 1, 438100180000.000, 438100180000.000, 2, '2021-12-01', '2021-12-27', '2021-12-01', '2021-12-27', '2', 'Bank Indonesia', '1,825 km', NULL, 2, 'Access Road', 9999.99, '1', 0, 0, '0000-00-00 00:00:00', '2022-01-12 11:10:08', 1, 'N'),
+	(76, '222001', 'Pelebaran Jalan Kuta Kawasan Mandalika', 'Desa Kuta, Kecamatan Pujut, Lombok Tengah, Nusa Tenggara Barat ( NTB )', '', '', 'PT Indah Karya', 1, 123280000000.000, 123280000000.000, 1, '2022-01-30', '2022-10-27', '2022-10-28', '2023-10-28', '2', 'Kementrian PUPR Ditjen Bina Marga', NULL, NULL, 2, 'Access Road', 9999.99, '1', 0, 0, '0000-00-00 00:00:00', '2022-01-27 09:55:08', 1, 'N'),
+	(77, '222002', 'Penataan Kawasan Mandalika', 'Desa Kuta, Kecamatan Pujut, Lombok Tengah, Nusa Tenggara Barat ( NTB )', '', '', 'PT. Yodya Karya', 1, 80909090909.000, 80909090909.000, 1, '2022-03-10', '2022-10-28', '2022-10-29', '2023-10-29', '2', 'Kementrian PUPR Ditejen Cipta Karya', NULL, NULL, 2, 'Access Road', 9999.99, '1', 0, 0, '0000-00-00 00:00:00', '2022-01-27 09:54:56', 1, 'N'),
+	(78, '221323', 'Pekerjaan Faslitas Sisi Darat Bandar Udara Siboru Fakfak', 'Desa Siboru, Distrik Warturin', '', '', 'Ciriajasa Cipta Mandiri', 1, 219.000, 219.000, 1, '2021-11-18', '2022-12-31', '2023-01-01', '2023-12-31', '2', 'Kementerian Perhubungan', NULL, NULL, 1, 'Airport Infrastructure', 3.00, '1', 0, 0, '0000-00-00 00:00:00', '2022-01-27 16:20:09', 1, 'N');
 /*!40000 ALTER TABLE `mproyek` ENABLE KEYS */;
 
 -- Dumping structure for table ppqc.mproyek_bpp
@@ -10218,42 +10219,24 @@ INSERT INTO `musers` (`id`, `nik`, `nama_lengkap`, `email`, `phone_number`, `wa_
 	(171, '', 'FERY WICAKSONO', 'fery.wicaksono@ptpp.co.id', '08128321905', '08128321905', NULL, NULL, NULL, 'fery.wicaksono@ptpp.co.id', '071244e9765699ad020e925c3da6007b', 2, 1, '2', 1, '0', '2022-01-27 11:16:30');
 /*!40000 ALTER TABLE `musers` ENABLE KEYS */;
 
--- Dumping structure for table ppqc.m_akarmasalah_nc
-DROP TABLE IF EXISTS `m_akarmasalah_nc`;
-CREATE TABLE IF NOT EXISTS `m_akarmasalah_nc` (
+-- Dumping structure for table ppqc.m_alat
+DROP TABLE IF EXISTS `m_alat`;
+CREATE TABLE IF NOT EXISTS `m_alat` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `akar_nc` varchar(255) DEFAULT NULL,
+  `alat` varchar(255) DEFAULT NULL,
   `tgl_buat` date DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
 
--- Dumping data for table ppqc.m_akarmasalah_nc: ~22 rows (approximately)
-DELETE FROM `m_akarmasalah_nc`;
-/*!40000 ALTER TABLE `m_akarmasalah_nc` DISABLE KEYS */;
-INSERT INTO `m_akarmasalah_nc` (`id`, `akar_nc`, `tgl_buat`) VALUES
-	(1, 'Material Alam', '2022-01-05'),
-	(2, 'Material Olahan', '2022-01-05'),
-	(3, 'Material Pabrikan', '2022-01-05'),
-	(4, 'Pengetahuan Pekerja Vendor', '2022-01-05'),
-	(5, 'Pengetahuan Personil Internal', '2022-01-05'),
-	(6, 'Pengawasan', '2022-01-05'),
-	(7, 'Kepatuhan', '2022-01-05'),
-	(8, 'Kepedulian', '2022-01-05'),
-	(9, 'Jumlah Tenaga', '2022-01-05'),
-	(10, 'Proses Kerja (SOP)', '2022-01-05'),
-	(11, 'Kode/ Tagging', '2022-01-05'),
-	(12, 'Komunikasi/ Koordinasi', '2022-01-05'),
-	(13, 'Perencanaan', '2022-01-05'),
-	(14, 'Evaluasi', '2022-01-05'),
-	(15, 'Perawatan/ Perlindungan', '2022-01-05'),
-	(16, 'Assessment Alat', '2022-01-05'),
-	(17, 'Rusak Saat Pelaksanaan', '2022-01-05'),
-	(18, 'Spesifikasi', '2022-01-05'),
-	(19, 'Jumlah Alat', '2022-01-05'),
-	(20, 'Ruang Kerja Terbatas', '2022-01-05'),
-	(21, 'Suhu dan Cuaca', '2022-01-05'),
-	(22, 'Orang diluar Proyek', '2022-01-05');
-/*!40000 ALTER TABLE `m_akarmasalah_nc` ENABLE KEYS */;
+-- Dumping data for table ppqc.m_alat: ~5 rows (approximately)
+DELETE FROM `m_alat`;
+/*!40000 ALTER TABLE `m_alat` DISABLE KEYS */;
+INSERT INTO `m_alat` (`id`, `alat`, `tgl_buat`) VALUES
+	(1, 'Jumlah Alat', '2022-05-26'),
+	(2, 'Rusak Saat Digunakan', '2022-05-26'),
+	(3, 'Spesifikasi Alat', '2022-05-26'),
+	(4, 'Perawatan Alat', '2022-05-26');
+/*!40000 ALTER TABLE `m_alat` ENABLE KEYS */;
 
 -- Dumping structure for table ppqc.m_areapekerjaan_nc
 DROP TABLE IF EXISTS `m_areapekerjaan_nc`;
@@ -10295,6 +10278,44 @@ INSERT INTO `m_areapekerjaan_nc` (`id`, `type_nc`, `tgl_buat`) VALUES
 	(25, 'Taman', '2022-01-05');
 /*!40000 ALTER TABLE `m_areapekerjaan_nc` ENABLE KEYS */;
 
+-- Dumping structure for table ppqc.m_bahan
+DROP TABLE IF EXISTS `m_bahan`;
+CREATE TABLE IF NOT EXISTS `m_bahan` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `bahan` varchar(255) DEFAULT NULL,
+  `tgl_buat` date DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+-- Dumping data for table ppqc.m_bahan: ~2 rows (approximately)
+DELETE FROM `m_bahan`;
+/*!40000 ALTER TABLE `m_bahan` DISABLE KEYS */;
+INSERT INTO `m_bahan` (`id`, `bahan`, `tgl_buat`) VALUES
+	(1, 'Spesifikasi', '2022-05-26'),
+	(2, 'Konsistensi', '2022-05-26'),
+	(3, 'Ketersediaan', '2022-05-26');
+/*!40000 ALTER TABLE `m_bahan` ENABLE KEYS */;
+
+-- Dumping structure for table ppqc.m_cara
+DROP TABLE IF EXISTS `m_cara`;
+CREATE TABLE IF NOT EXISTS `m_cara` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `cara` varchar(255) DEFAULT NULL,
+  `tgl_buat` date DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+
+-- Dumping data for table ppqc.m_cara: ~5 rows (approximately)
+DELETE FROM `m_cara`;
+/*!40000 ALTER TABLE `m_cara` DISABLE KEYS */;
+INSERT INTO `m_cara` (`id`, `cara`, `tgl_buat`) VALUES
+	(1, 'Miskomunikasi', '2022-05-26'),
+	(2, 'Tidak Ada WMS', '2022-05-26'),
+	(3, 'Tidak di-Review', '2022-05-26'),
+	(4, 'Kesalahan Kode/ Tagging', '2022-05-26'),
+	(5, 'Tdk Dirawat/ Dilindungi', '2022-05-26');
+/*!40000 ALTER TABLE `m_cara` ENABLE KEYS */;
+
 -- Dumping structure for table ppqc.m_disposisi
 DROP TABLE IF EXISTS `m_disposisi`;
 CREATE TABLE IF NOT EXISTS `m_disposisi` (
@@ -10334,7 +10355,7 @@ DROP TABLE IF EXISTS `m_kriteria_penilaian`;
 CREATE TABLE IF NOT EXISTS `m_kriteria_penilaian` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `pekerjaan_id` int(11) DEFAULT NULL,
-  `kriteria` varchar(200) DEFAULT NULL,
+  `kriteria` text,
   `tgl_input` date DEFAULT NULL,
   `created_by` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
@@ -10407,6 +10428,24 @@ INSERT INTO `m_level_nc` (`id`, `level_nc`, `tgl_buat`, `user_id`) VALUES
 	(3, 'Major', '2022-01-05', 1);
 /*!40000 ALTER TABLE `m_level_nc` ENABLE KEYS */;
 
+-- Dumping structure for table ppqc.m_lingkungan
+DROP TABLE IF EXISTS `m_lingkungan`;
+CREATE TABLE IF NOT EXISTS `m_lingkungan` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `lingkungan` varchar(255) DEFAULT NULL,
+  `tgl_buat` date DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+
+-- Dumping data for table ppqc.m_lingkungan: ~2 rows (approximately)
+DELETE FROM `m_lingkungan`;
+/*!40000 ALTER TABLE `m_lingkungan` DISABLE KEYS */;
+INSERT INTO `m_lingkungan` (`id`, `lingkungan`, `tgl_buat`) VALUES
+	(1, 'Faktor External', '2022-05-26'),
+	(2, 'Rang kerja terbatas', '2022-05-26'),
+	(3, 'Suhu dan Cuaca', '2022-05-26');
+/*!40000 ALTER TABLE `m_lingkungan` ENABLE KEYS */;
+
 -- Dumping structure for table ppqc.m_nilai
 DROP TABLE IF EXISTS `m_nilai`;
 CREATE TABLE IF NOT EXISTS `m_nilai` (
@@ -10459,7 +10498,7 @@ INSERT INTO `m_nilai_item` (`id`, `nilai_id`, `item_penilaian`) VALUES
 	(18, 3, 'Terdapat training & refreshment pra pelaksanaan : '),
 	(19, 3, 'Apakah ada tinjauan aspek quality dalam penentuan vendor ?'),
 	(20, 3, 'Apakah dilakukan evaluasi terhadap kualitas pekerjaan vendor? Bagaimana tindak lanjutnya?'),
-	(21, 3, 'Apakah kalibrasi alat (ukur, takar, dan timbang) dilaksanakan? '),
+	(21, 3, 'Apakah kalibrasi alat (ukur, takar, dan timbang) dilaksanakan? <br/>\r\n- di proyek (theodolite, waterpass, total station timbangan dll)<br/>\r\n- di Plant (AMP, batching, Plant dll'),
 	(22, 3, 'Apakah sudah dilaksanakan review sesuai masa berlakunya alat?'),
 	(23, 3, 'Terdapat daftar monitoring pengajuan dan persetujuan materai utama?'),
 	(24, 3, 'Apakah setiap material utama yang masuk dilakukan pemeriksaan terhadap kesesuaian spesifikasinya?'),
@@ -10475,7 +10514,7 @@ INSERT INTO `m_nilai_item` (`id`, `nilai_id`, `item_penilaian`) VALUES
 	(34, 4, 'Apakah semua method statement pekerjaan utama sudah disosialisasikan kesemua pihak terkait?'),
 	(35, 4, 'Apakah dilakukan evaluasi method statement pekerjaan utama yang sudah terlaksanakan?'),
 	(36, 5, 'Terdapat mix design/job mix formula/ trial embankment/dll yang disahkan?'),
-	(37, 5, 'Mockup : '),
+	(37, 5, '<b>Mockup : </b> <br/>\r\n1. Schedule mockup (untuk pekerjaan typical, resiko tinggi, spesifik, teknologi baru), <br/>\r\n2. Pengajuan dan persetujuan mockup, <br/>\r\n3. Apakah ada evaluasi mockup terhadap proses pelaksanaan, waktu, produktivitas, biaya?'),
 	(38, 5, 'Apakah ada joint inspection/pemeriksaan pra-pelaksanaan yang disahkan semua pihak? Dokmentasi dengan baik?'),
 	(39, 5, 'Apakah ada berita acara/ join inspection/ testing/ pemeriksaan pasca pelaksanaan yang ditanda tangani semua pihak? terdokumentasi dengan baik?'),
 	(40, 5, 'Apakah ada evaluasi hasil pekerjaan terhadapt quality target (assesment pekerjaan)?'),
@@ -10483,31 +10522,53 @@ INSERT INTO `m_nilai_item` (`id`, `nilai_id`, `item_penilaian`) VALUES
 	(42, 5, 'Apakah ada testing & commisioning?');
 /*!40000 ALTER TABLE `m_nilai_item` ENABLE KEYS */;
 
+-- Dumping structure for table ppqc.m_orang
+DROP TABLE IF EXISTS `m_orang`;
+CREATE TABLE IF NOT EXISTS `m_orang` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `orang` varchar(255) DEFAULT NULL,
+  `tgl_buat` date DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+
+-- Dumping data for table ppqc.m_orang: ~4 rows (approximately)
+DELETE FROM `m_orang`;
+/*!40000 ALTER TABLE `m_orang` DISABLE KEYS */;
+INSERT INTO `m_orang` (`id`, `orang`, `tgl_buat`) VALUES
+	(1, 'Jumlah', '2022-05-26'),
+	(2, 'Kepatuhan', '2022-05-26'),
+	(3, 'Pengetahuan', '2022-05-26'),
+	(4, 'Pengawasan', '2022-05-26'),
+	(5, 'Ketelitian', '2022-05-26');
+/*!40000 ALTER TABLE `m_orang` ENABLE KEYS */;
+
 -- Dumping structure for table ppqc.m_pekerjaan
 DROP TABLE IF EXISTS `m_pekerjaan`;
 CREATE TABLE IF NOT EXISTS `m_pekerjaan` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `pekerjaan` text,
+  `satuan` varchar(50) DEFAULT NULL,
   `tgl_input` date DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
 
 -- Dumping data for table ppqc.m_pekerjaan: ~11 rows (approximately)
 DELETE FROM `m_pekerjaan`;
 /*!40000 ALTER TABLE `m_pekerjaan` DISABLE KEYS */;
-INSERT INTO `m_pekerjaan` (`id`, `pekerjaan`, `tgl_input`, `user_id`) VALUES
-	(1, 'CLEARING & GRUBING', '2022-01-27', 1),
-	(2, 'STRIPPING', '2022-01-27', 1),
-	(3, 'BOILING', '2022-01-27', 1),
-	(4, 'STONE COLUMN', '2022-01-27', 1),
-	(5, 'PERBAIKAN TANAH DASAR DGN METODE PRELOADING', '2022-03-10', 8),
-	(6, 'DYNAMIC COMPACTION', '2022-03-10', 8),
-	(7, 'STONE COLUMN', '2022-03-10', 8),
-	(11, 'PEMBESIAN', '2022-03-10', 8),
-	(12, 'BEKISTING', '2022-03-10', 8),
-	(13, 'CONTINOUS BORE PILE', '2022-03-10', 8),
-	(14, 'GALIAN TANAH', '2022-03-10', 8);
+INSERT INTO `m_pekerjaan` (`id`, `pekerjaan`, `satuan`, `tgl_input`, `user_id`) VALUES
+	(1, 'CLEARING & GRUBING', 'm3', '2022-01-27', 1),
+	(2, 'STRIPPING', 'm', '2022-01-27', 1),
+	(3, 'BOILING', 'm4', '2022-01-27', 1),
+	(4, 'STONE COLUMN', 'm', '2022-01-27', 1),
+	(5, 'PERBAIKAN TANAH DASAR DGN METODE PRELOADING', 'm', '2022-03-10', 8),
+	(6, 'DYNAMIC COMPACTION', 'm2', '2022-03-10', 8),
+	(7, 'STONE COLUMN', 'm2', '2022-03-10', 8),
+	(11, 'PEMBESIAN', 'm2', '2022-03-10', 8),
+	(12, 'BEKISTING', 'm2', '2022-03-10', 8),
+	(13, 'CONTINOUS BORE PILE', 'm2', '2022-03-10', 8),
+	(14, 'GALIAN TANAH', 'cm', '2022-03-10', 8),
+	(18, 'TES OKE', 'm2', '2022-11-08', 8);
 /*!40000 ALTER TABLE `m_pekerjaan` ENABLE KEYS */;
 
 -- Dumping structure for table ppqc.m_project
@@ -10534,6 +10595,23 @@ INSERT INTO `m_project` (`id`, `kode_project`, `nama_project`, `sumber_dana`, `t
 	(3, 'PP-003', 'Jalan Tol Cipali', 'APBD', '2022-01-11', NULL, 'Pemprov. Sultra', 'Jalan Non-Toll', 'PP - Karya Pare Sejahtera (60 : 40)%');
 /*!40000 ALTER TABLE `m_project` ENABLE KEYS */;
 
+-- Dumping structure for table ppqc.m_setting
+DROP TABLE IF EXISTS `m_setting`;
+CREATE TABLE IF NOT EXISTS `m_setting` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `tipe` enum('1','2','3') DEFAULT NULL COMMENT '1 = Side Banner Logo\r\n2 = Logo\r\n3 = Dokumentasi',
+  `files` text,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+-- Dumping data for table ppqc.m_setting: ~2 rows (approximately)
+DELETE FROM `m_setting`;
+/*!40000 ALTER TABLE `m_setting` DISABLE KEYS */;
+INSERT INTO `m_setting` (`id`, `tipe`, `files`) VALUES
+	(1, '1', 'auth-onboard.png'),
+	(2, '2', 'logo.png');
+/*!40000 ALTER TABLE `m_setting` ENABLE KEYS */;
+
 -- Dumping structure for table ppqc.m_sumber_nc
 DROP TABLE IF EXISTS `m_sumber_nc`;
 CREATE TABLE IF NOT EXISTS `m_sumber_nc` (
@@ -10548,10 +10626,34 @@ CREATE TABLE IF NOT EXISTS `m_sumber_nc` (
 DELETE FROM `m_sumber_nc`;
 /*!40000 ALTER TABLE `m_sumber_nc` DISABLE KEYS */;
 INSERT INTO `m_sumber_nc` (`id`, `sumber_nc`, `tgl_input`, `created_by`) VALUES
+	(1, 'Pek. Vendor', '2022-06-14', 1),
 	(2, 'Pek. Internal', '2022-03-11', 1),
 	(3, 'Cust. Complaint', '2022-03-11', 1),
 	(4, 'Material SBO', '2022-03-11', 1);
 /*!40000 ALTER TABLE `m_sumber_nc` ENABLE KEYS */;
+
+-- Dumping structure for table ppqc.m_supplier
+DROP TABLE IF EXISTS `m_supplier`;
+CREATE TABLE IF NOT EXISTS `m_supplier` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nama_supplier` varchar(200) DEFAULT NULL,
+  `alamat` text,
+  `email` varchar(50) DEFAULT NULL,
+  `telepon` varchar(50) DEFAULT NULL,
+  `tgl_input` date DEFAULT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+
+-- Dumping data for table ppqc.m_supplier: ~4 rows (approximately)
+DELETE FROM `m_supplier`;
+/*!40000 ALTER TABLE `m_supplier` DISABLE KEYS */;
+INSERT INTO `m_supplier` (`id`, `nama_supplier`, `alamat`, `email`, `telepon`, `tgl_input`, `created_by`) VALUES
+	(1, 'PT. INDOTAMA', 'Jakarta', 'abc@gmail.com', '0218089', NULL, NULL),
+	(2, 'PT. JANATA', 'Jakarta Selatan', 'haribima@haribima.id', '087872285060', NULL, NULL),
+	(3, 'PT. BPMN', 'Parungpanjang', 'kompictures0@gmail.com', '021', '2022-04-12', 9),
+	(4, 'PT. DIRGANTARA INDONESIA', 'Bandung Indonesia', 'pranindo.nunung@gmail.com', '0909098888', '2022-05-15', 8);
+/*!40000 ALTER TABLE `m_supplier` ENABLE KEYS */;
 
 -- Dumping structure for table ppqc.m_survey
 DROP TABLE IF EXISTS `m_survey`;
@@ -10594,10 +10696,10 @@ DELETE FROM `m_type_nc`;
 INSERT INTO `m_type_nc` (`id`, `type_nc`, `tgl_buat`, `user_id`) VALUES
 	(5, 'Geripis', '2022-02-17', 1),
 	(6, 'Honeycomp/Keropos', '2022-02-17', 1),
-	(7, 'Bocor/ tidak rapat', NULL, 1),
-	(8, 'Kotor', NULL, 1),
-	(9, 'Miring', NULL, 1),
-	(10, 'Permukaan tidak rata', NULL, 1),
+	(7, 'Bocor/tidak rapat', '2022-03-29', 1),
+	(8, 'Kotor', '2022-03-29', 1),
+	(9, 'Miring', '2022-03-29', 1),
+	(10, 'Permukaan tidak rata', '2022-03-29', 1),
 	(21, 'Tidak Kokoh', '2022-03-10', 8),
 	(22, 'Tidak Lurus', '2022-03-10', 8),
 	(23, 'Sambungan tidak rata', '2022-03-10', 8);
@@ -10616,15 +10718,16 @@ CREATE TABLE IF NOT EXISTS `m_users` (
   `project_id` int(11) DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
--- Dumping data for table ppqc.m_users: ~2 rows (approximately)
+-- Dumping data for table ppqc.m_users: ~5 rows (approximately)
 DELETE FROM `m_users`;
 /*!40000 ALTER TABLE `m_users` DISABLE KEYS */;
 INSERT INTO `m_users` (`id`, `nama_lengkap`, `nrp`, `username`, `sandi`, `level_id`, `tgl_buat`, `project_id`, `email`) VALUES
-	(1, 'Superadmin', '-', 'admin@gmail.com', '0cc175b9c0f1b6a831c399e269772661', 3, '2021-12-21 10:51:05', NULL, NULL),
-	(2, 'EKA RIANA', '17061981', NULL, '0cc175b9c0f1b6a831c399e269772661', 1, '2022-02-25 17:40:58', 32, 'ngoprex.eka@gmail.com'),
-	(8, 'RUSMANA BASYAR', '-', 'rusmanab@gmail.com', '0cc175b9c0f1b6a831c399e269772661', 1, '2022-03-07 11:26:04', 18, 'rusmanab@gmail.com');
+	(1, 'Superadmin', '-', 'admin@gmail.com', '0cc175b9c0f1b6a831c399e269772661', 3, '2021-12-21 10:51:05', NULL, 'admin@gmail.com'),
+	(8, 'RUSMANA BASYAR', '99999', 'rusmanab@gmail.com', '0cc175b9c0f1b6a831c399e269772661', 1, '2022-03-07 11:26:04', 18, 'rusmanab@gmail.com'),
+	(9, 'NUNUNG NURJANAH', '77777', 'pranindo.nunung@gmail.com', 'd41d8cd98f00b204e9800998ecf8427e', 1, '2022-04-10 23:27:29', 14, 'pranindo.nunung@gmail.com'),
+	(10, 'ekaperintis', '17061982', 'ekaperintis@gmail.com', '0cc175b9c0f1b6a831c399e269772661', 4, '2022-11-08 22:08:05', 35, 'ekaperintis@gmail.com');
 /*!40000 ALTER TABLE `m_users` ENABLE KEYS */;
 
 -- Dumping structure for table ppqc.m_vendor
@@ -10635,15 +10738,18 @@ CREATE TABLE IF NOT EXISTS `m_vendor` (
   `alamat` text,
   `email` varchar(50) DEFAULT NULL,
   `telepon` varchar(50) DEFAULT NULL,
+  `tgl_input` date DEFAULT NULL,
+  `created_by` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 -- Dumping data for table ppqc.m_vendor: ~2 rows (approximately)
 DELETE FROM `m_vendor`;
 /*!40000 ALTER TABLE `m_vendor` DISABLE KEYS */;
-INSERT INTO `m_vendor` (`id`, `nama_vendor`, `alamat`, `email`, `telepon`) VALUES
-	(1, 'PT. ABC', 'Jakarta', NULL, NULL),
-	(2, 'PT. HARIBIMA', 'Jakarta Selatan', NULL, NULL);
+INSERT INTO `m_vendor` (`id`, `nama_vendor`, `alamat`, `email`, `telepon`, `tgl_input`, `created_by`) VALUES
+	(1, 'PT. ABC', 'Jakarta', 'abc@gmail.com', '0218089', NULL, NULL),
+	(2, 'PT. HARIBIMA', 'Jakarta Selatan', 'haribima@haribima.id', '087872285060', NULL, NULL),
+	(3, 'PT. KURNIA ALAM', 'Parungpanjang', 'kompictures0@gmail.com', '99999999', '2022-04-12', 9);
 /*!40000 ALTER TABLE `m_vendor` ENABLE KEYS */;
 
 -- Dumping structure for table ppqc.tbl_oauth
@@ -11296,11 +11402,13 @@ CREATE TABLE IF NOT EXISTS `temp_image` (
   `file` text,
   `type` int(11) DEFAULT NULL COMMENT '1 => Temuan\r\n2 => Investigasi\r\n3 => Closing',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
--- Dumping data for table ppqc.temp_image: ~0 rows (approximately)
+-- Dumping data for table ppqc.temp_image: ~1 rows (approximately)
 DELETE FROM `temp_image`;
 /*!40000 ALTER TABLE `temp_image` DISABLE KEYS */;
+INSERT INTO `temp_image` (`id`, `file`, `type`) VALUES
+	(2, 'Screenshot_16.png', 1);
 /*!40000 ALTER TABLE `temp_image` ENABLE KEYS */;
 
 -- Dumping structure for table ppqc.temp_import_bpp_sales
@@ -11408,6 +11516,75 @@ DELETE FROM `temp_mproyek_dok`;
 /*!40000 ALTER TABLE `temp_mproyek_dok` DISABLE KEYS */;
 /*!40000 ALTER TABLE `temp_mproyek_dok` ENABLE KEYS */;
 
+-- Dumping structure for table ppqc.tr_assesment_material
+DROP TABLE IF EXISTS `tr_assesment_material`;
+CREATE TABLE IF NOT EXISTS `tr_assesment_material` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `project_id` int(11) DEFAULT NULL,
+  `nama_project` varchar(200) DEFAULT NULL,
+  `supplier_id` int(11) DEFAULT NULL,
+  `pekerjaan_id` int(11) DEFAULT NULL,
+  `nama_pekerjaan` varchar(200) DEFAULT NULL,
+  `nama_supplier` varchar(200) DEFAULT NULL,
+  `satuan_pekerjaan` varchar(50) DEFAULT NULL,
+  `nilai_pekerjaan` decimal(6,2) DEFAULT '0.00',
+  `nc_pekerjaan` decimal(6,2) DEFAULT '0.00',
+  `user_id` int(11) DEFAULT NULL,
+  `koreksi` decimal(6,2) DEFAULT '0.00',
+  `tanggal` date DEFAULT NULL,
+  `tabul` char(6) DEFAULT NULL,
+  `parameter_pekerjaan` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+
+-- Dumping data for table ppqc.tr_assesment_material: ~3 rows (approximately)
+DELETE FROM `tr_assesment_material`;
+/*!40000 ALTER TABLE `tr_assesment_material` DISABLE KEYS */;
+INSERT INTO `tr_assesment_material` (`id`, `project_id`, `nama_project`, `supplier_id`, `pekerjaan_id`, `nama_pekerjaan`, `nama_supplier`, `satuan_pekerjaan`, `nilai_pekerjaan`, `nc_pekerjaan`, `user_id`, `koreksi`, `tanggal`, `tabul`, `parameter_pekerjaan`) VALUES
+	(4, 18, NULL, 3, 12, 'BEKISTING', 'PT. BPMN', 'm2', 70.00, 30.00, 8, 45.00, '2022-06-15', '202206', NULL),
+	(5, 18, NULL, 1, 11, 'PEMBESIAN', 'PT. INDOTAMA', 'm2', 70.00, 10.00, 8, 50.00, '2022-06-15', '202206', NULL),
+	(6, 18, NULL, 2, 12, 'BEKISTING', 'PT. JANATA', 'm2', 30.00, 10.00, 8, 22.00, '2022-06-15', '202206', NULL);
+/*!40000 ALTER TABLE `tr_assesment_material` ENABLE KEYS */;
+
+-- Dumping structure for table ppqc.tr_assesment_pekerjaan
+DROP TABLE IF EXISTS `tr_assesment_pekerjaan`;
+CREATE TABLE IF NOT EXISTS `tr_assesment_pekerjaan` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `project_id` int(11) DEFAULT NULL,
+  `nama_project` varchar(200) DEFAULT NULL,
+  `vendor_id` int(11) DEFAULT NULL,
+  `pekerjaan_id` int(11) DEFAULT NULL,
+  `nama_pekerjaan` varchar(200) DEFAULT NULL,
+  `nama_vendor` varchar(200) DEFAULT NULL,
+  `satuan_pekerjaan` varchar(50) DEFAULT NULL,
+  `nilai_pekerjaan` decimal(6,2) DEFAULT '0.00',
+  `nc_pekerjaan` decimal(6,2) DEFAULT '0.00',
+  `koreksi` decimal(6,2) DEFAULT '0.00',
+  `tanggal` date DEFAULT NULL,
+  `tabul` char(6) DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `parameter_pekerjaan` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
+
+-- Dumping data for table ppqc.tr_assesment_pekerjaan: ~11 rows (approximately)
+DELETE FROM `tr_assesment_pekerjaan`;
+/*!40000 ALTER TABLE `tr_assesment_pekerjaan` DISABLE KEYS */;
+INSERT INTO `tr_assesment_pekerjaan` (`id`, `project_id`, `nama_project`, `vendor_id`, `pekerjaan_id`, `nama_pekerjaan`, `nama_vendor`, `satuan_pekerjaan`, `nilai_pekerjaan`, `nc_pekerjaan`, `koreksi`, `tanggal`, `tabul`, `user_id`, `parameter_pekerjaan`) VALUES
+	(1, 18, NULL, 1, 1, 'CLEARING & GRUBING', 'PT. ABC', 'm2', 90.00, 30.00, 55.10, '2022-06-15', '202206', 8, NULL),
+	(2, 18, NULL, 3, 1, 'CLEARING & GRUBING', 'PT. KURNIA ALAM', 'm2', 70.00, 10.00, 80.00, '2022-06-15', '202206', 8, NULL),
+	(3, 18, NULL, 2, 3, 'BOILING', 'PT. HARIBIMA', 'm2', 70.00, 10.00, 10.00, '2022-06-15', '202206', 8, NULL),
+	(4, 18, NULL, 2, 1, 'CLEARING & GRUBING', 'PT. HARIBIMA', 'm2', 50.00, 40.00, 12.00, '2022-06-15', '202206', 8, NULL),
+	(8, 18, NULL, 2, 3, 'BOILING', 'PT. HARIBIMA', 'm2', 70.00, 30.00, 10.00, '2022-06-15', '202206', 8, NULL),
+	(9, 18, NULL, 3, 4, 'STONE COLUMN', 'PT. KURNIA ALAM', 'm2', 70.00, 10.00, 60.00, '2022-05-15', '202205', 8, NULL),
+	(11, 18, NULL, 2, 4, 'STONE COLUMN', 'PT. HARIBIMA', 'm2', 90.00, 70.00, 78.00, '2022-05-15', '202205', 8, NULL),
+	(12, 18, NULL, 3, 14, 'GALIAN TANAH', 'PT. KURNIA ALAM', 'm2', 90.00, 30.00, 70.00, '2022-05-15', '202205', 8, NULL),
+	(15, 18, NULL, 3, 6, 'DYNAMIC COMPACTION', 'PT. KURNIA ALAM', 'm2', 40.00, 35.00, 20.00, NULL, NULL, 8, NULL),
+	(16, 18, NULL, 2, 6, 'DYNAMIC COMPACTION', 'PT. HARIBIMA', 'm2', 100.00, 20.00, 15.00, NULL, NULL, 8, NULL),
+	(17, 18, NULL, 2, 14, 'GALIAN TANAH', 'PT. HARIBIMA', 'cm', 10.00, 5.00, 50.00, NULL, NULL, 8, NULL),
+	(18, 18, NULL, 1, 2, 'STRIPPING', 'PT. ABC', 'm', 100.00, 20.00, 10.00, NULL, NULL, 8, 100);
+/*!40000 ALTER TABLE `tr_assesment_pekerjaan` ENABLE KEYS */;
+
 -- Dumping structure for table ppqc.tr_bank_data
 DROP TABLE IF EXISTS `tr_bank_data`;
 CREATE TABLE IF NOT EXISTS `tr_bank_data` (
@@ -11419,14 +11596,25 @@ CREATE TABLE IF NOT EXISTS `tr_bank_data` (
   `tgl_input` date DEFAULT NULL,
   `created_by` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 
--- Dumping data for table ppqc.tr_bank_data: ~3 rows (approximately)
+-- Dumping data for table ppqc.tr_bank_data: ~13 rows (approximately)
 DELETE FROM `tr_bank_data`;
 /*!40000 ALTER TABLE `tr_bank_data` DISABLE KEYS */;
 INSERT INTO `tr_bank_data` (`id`, `nama_file`, `project_id`, `pekerjaan_id`, `kriteria_penilaian_id`, `tgl_input`, `created_by`) VALUES
-	(1, 'WhatsApp_Image_2022-03-22_at_12.06.29.jpeg', 18, 4, 21, '2022-03-24', 8),
-	(2, 'Tidak_berjudul.png', 14, 4, 21, '2022-03-26', 1);
+	(4, 'ANDIKA-INFO-GTK2.png', 18, 1, 1, '2022-04-03', 8),
+	(5, 'simdig_2022_11.png', 18, 4, 21, '2022-04-03', 8),
+	(6, 'Screenshot_6.png', 18, 1, 1, '2022-04-04', 8),
+	(7, 'logo.png', 18, 4, 21, '2022-05-18', 8),
+	(8, 'gambar_soal_8262.png', 18, 1, 3, '2022-05-26', 8),
+	(9, 'Screenshot_16.png', 18, 4, 21, '2022-05-28', 8),
+	(10, 'Screenshot_15.png', 18, 4, 21, '2022-05-28', 8),
+	(11, 'gambar_soal_8255.png', 18, 4, 21, '2022-05-28', 8),
+	(12, 'Kursus_Flutter_2.png', 18, 4, 21, '2022-05-28', 8),
+	(13, 'gambar_soal_8256.png', 18, 4, 21, '2022-05-28', 8),
+	(14, 'Kursus_Flutter.png', 18, 4, 21, '2022-05-28', 8),
+	(15, 'gambar_soal_8258.png', 18, 4, 21, '2022-05-28', 8),
+	(16, 'gambar_soal_8262.png', 18, 4, 21, '2022-05-28', 8);
 /*!40000 ALTER TABLE `tr_bank_data` ENABLE KEYS */;
 
 -- Dumping structure for table ppqc.tr_css
@@ -11456,16 +11644,11 @@ CREATE TABLE IF NOT EXISTS `tr_css` (
   `kesesuaian_anggaran_50` int(11) DEFAULT '0',
   `user_id` int(11) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1 COMMENT='Tabel untuk mengelola data Customer Satisfaction Survey';
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Tabel untuk mengelola data Customer Satisfaction Survey';
 
--- Dumping data for table ppqc.tr_css: ~3 rows (approximately)
+-- Dumping data for table ppqc.tr_css: ~0 rows (approximately)
 DELETE FROM `tr_css`;
 /*!40000 ALTER TABLE `tr_css` DISABLE KEYS */;
-INSERT INTO `tr_css` (`id`, `project_id`, `pengelolaan_proses_kerja_50`, `pengelolaan_proses_kerja_100`, `kapasitas_sdm_50`, `kapasitas_sdm_100`, `kualitas_produk_50`, `kualitas_produk_100`, `ketepatan_waktu_penyelesaian_50`, `ketepatan_waktu_penyelesaian_100`, `pengelolaan_ktiga_50`, `pengelolaan_ktiga_100`, `kepedulian_terhadap_lingkungan_50`, `kepedulian_terhadap_lingkungan_100`, `fleksibilitas_layanan_100`, `fleksibilitas_layanan_50`, `kecepatan_respon_50`, `kecepatan_respon_100`, `komunikasi_interpersonal_100`, `komunikasi_interpersonal_50`, `kesesuaian_anggaran_100`, `kesesuaian_anggaran_50`, `user_id`) VALUES
-	(1, 1, 43, 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL),
-	(2, 3, 12, 67, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL),
-	(3, 13, 90, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL),
-	(4, 14, 80, 90, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1);
 /*!40000 ALTER TABLE `tr_css` ENABLE KEYS */;
 
 -- Dumping structure for table ppqc.tr_css_detail
@@ -11476,81 +11659,69 @@ CREATE TABLE IF NOT EXISTS `tr_css_detail` (
   `nilai50` int(11) DEFAULT '0',
   `nilai100` int(11) DEFAULT '0',
   `project_id` int(11) DEFAULT NULL,
+  `tabul` char(6) DEFAULT NULL,
+  `tanggal` date DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=69 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=latin1;
 
--- Dumping data for table ppqc.tr_css_detail: ~65 rows (approximately)
+-- Dumping data for table ppqc.tr_css_detail: ~51 rows (approximately)
 DELETE FROM `tr_css_detail`;
 /*!40000 ALTER TABLE `tr_css_detail` DISABLE KEYS */;
-INSERT INTO `tr_css_detail` (`id`, `survey_id`, `nilai50`, `nilai100`, `project_id`) VALUES
-	(1, 1, 0, 0, 14),
-	(2, 2, 0, 0, 14),
-	(3, 3, 0, 0, 14),
-	(4, 4, 0, 0, 14),
-	(5, 5, 0, 0, 14),
-	(6, 6, 0, 0, 14),
-	(7, 7, 0, 0, 14),
-	(8, 8, 0, 0, 14),
-	(9, 9, 0, 0, 14),
-	(10, 10, 0, 0, 14),
-	(11, 1, 0, 0, 15),
-	(12, 2, 0, 0, 15),
-	(13, 3, 0, 0, 15),
-	(14, 4, 0, 0, 15),
-	(15, 5, 0, 0, 15),
-	(16, 6, 0, 0, 15),
-	(17, 7, 0, 0, 15),
-	(18, 8, 0, 0, 15),
-	(19, 9, 0, 0, 15),
-	(20, 10, 0, 0, 15),
-	(21, 1, 30, 86, 13),
-	(22, 2, 60, 0, 13),
-	(23, 3, 80, 0, 13),
-	(24, 4, 34, 56, 13),
-	(25, 5, 67, 90, 13),
-	(26, 6, 67, 0, 13),
-	(27, 7, 30, 34, 13),
-	(28, 8, 0, 65, 13),
-	(29, 9, 45, 80, 13),
-	(30, 10, 0, 0, 13),
-	(31, 1, 12, 90, 16),
-	(32, 2, 12, 30, 16),
-	(33, 3, 12, 23, 16),
-	(34, 4, 7, 13, 16),
-	(35, 5, 9, 50, 16),
-	(36, 6, 34, 0, 16),
-	(37, 7, 50, 0, 16),
-	(38, 8, 3, 3, 16),
-	(39, 9, 3, 3, 16),
-	(40, 10, 90, 40, 16),
-	(41, 1, 10, 90, 18),
-	(42, 2, 90, 45, 18),
-	(43, 3, 0, 30, 18),
-	(44, 4, 0, 0, 18),
-	(45, 5, 0, 0, 18),
-	(46, 6, 0, 0, 18),
-	(47, 7, 0, 0, 18),
-	(48, 8, 0, 0, 18),
-	(49, 9, 0, 0, 18),
-	(50, 10, 0, 0, 18),
-	(51, 1, 0, 0, 0),
-	(52, 2, 0, 0, 0),
-	(53, 3, 0, 0, 0),
-	(54, 4, 0, 0, 0),
-	(55, 5, 0, 0, 0),
-	(56, 6, 0, 0, 0),
-	(57, 7, 0, 0, 0),
-	(58, 8, 0, 0, 0),
-	(59, 9, 0, 0, 0),
-	(60, 1, 12, 33, 65),
-	(61, 2, 23, 15, 65),
-	(62, 3, 0, 0, 65),
-	(63, 4, 0, 0, 65),
-	(64, 5, 0, 65, 65),
-	(65, 6, 67, 0, 65),
-	(66, 7, 90, 22, 65),
-	(67, 8, 0, 0, 65),
-	(68, 9, 34, 43, 65);
+INSERT INTO `tr_css_detail` (`id`, `survey_id`, `nilai50`, `nilai100`, `project_id`, `tabul`, `tanggal`) VALUES
+	(1, 1, 30, 50, 18, NULL, '2022-09-16'),
+	(2, 2, 40, 10, 18, NULL, '2022-09-16'),
+	(3, 3, 30, 74, 18, NULL, '2022-09-16'),
+	(4, 4, 60, 10, 18, NULL, '2022-09-16'),
+	(5, 5, 90, 77, 18, NULL, '2022-09-16'),
+	(6, 6, 76, 100, 18, NULL, '2022-09-16'),
+	(7, 7, 34, 45, 18, NULL, '2022-09-16'),
+	(8, 8, 0, 55, 18, NULL, '2022-09-16'),
+	(9, 9, 20, 90, 18, NULL, '2022-09-16'),
+	(10, 1, 10, 60, 14, NULL, '2022-08-16'),
+	(11, 2, 0, 0, 14, NULL, '2022-08-16'),
+	(12, 3, 0, 0, 14, NULL, '2022-08-16'),
+	(13, 4, 0, 0, 14, NULL, '2022-08-16'),
+	(14, 5, 0, 0, 14, NULL, '2022-08-16'),
+	(15, 6, 0, 0, 14, NULL, '2022-08-16'),
+	(16, 7, 0, 0, 14, NULL, '2022-08-16'),
+	(17, 8, 0, 0, 14, NULL, '2022-08-16'),
+	(18, 9, 90, 30, 14, NULL, '2022-08-16'),
+	(19, 1, 0, 0, NULL, NULL, NULL),
+	(20, 2, 0, 0, NULL, NULL, NULL),
+	(21, 3, 0, 0, NULL, NULL, NULL),
+	(22, 4, 0, 0, NULL, NULL, NULL),
+	(23, 5, 0, 0, NULL, NULL, NULL),
+	(24, 6, 0, 0, NULL, NULL, NULL),
+	(25, 7, 0, 0, NULL, NULL, NULL),
+	(26, 8, 0, 0, NULL, NULL, NULL),
+	(27, 9, 0, 0, NULL, NULL, NULL),
+	(28, 1, 0, 0, 13, NULL, NULL),
+	(29, 2, 0, 0, 13, NULL, NULL),
+	(30, 3, 0, 0, 13, NULL, NULL),
+	(31, 4, 0, 0, 13, NULL, NULL),
+	(32, 5, 0, 0, 13, NULL, NULL),
+	(33, 6, 0, 0, 13, NULL, NULL),
+	(34, 7, 0, 0, 13, NULL, NULL),
+	(35, 8, 0, 0, 13, NULL, NULL),
+	(36, 9, 0, 0, 13, NULL, NULL),
+	(37, 1, 0, 0, 0, NULL, NULL),
+	(38, 2, 0, 0, 0, NULL, NULL),
+	(39, 3, 0, 0, 0, NULL, NULL),
+	(40, 4, 0, 0, 0, NULL, NULL),
+	(41, 5, 0, 0, 0, NULL, NULL),
+	(42, 6, 0, 0, 0, NULL, NULL),
+	(43, 7, 0, 0, 0, NULL, NULL),
+	(44, 8, 0, 0, 0, NULL, NULL),
+	(45, 9, 0, 0, 0, NULL, NULL),
+	(46, 1, 0, 0, 35, NULL, NULL),
+	(47, 2, 0, 0, 35, NULL, NULL),
+	(48, 3, 0, 0, 35, NULL, NULL),
+	(49, 4, 0, 0, 35, NULL, NULL),
+	(50, 5, 0, 0, 35, NULL, NULL),
+	(51, 6, 0, 0, 35, NULL, NULL),
+	(52, 7, 0, 0, 35, NULL, NULL),
+	(53, 8, 0, 0, 35, NULL, NULL),
+	(54, 9, 0, 0, 35, NULL, NULL);
 /*!40000 ALTER TABLE `tr_css_detail` ENABLE KEYS */;
 
 -- Dumping structure for table ppqc.tr_css_files
@@ -11558,22 +11729,70 @@ DROP TABLE IF EXISTS `tr_css_files`;
 CREATE TABLE IF NOT EXISTS `tr_css_files` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `project_id` int(11) DEFAULT NULL,
+  `type_css` enum('1','2') DEFAULT '1',
+  `lengkap` enum('1','2') DEFAULT '1',
   `nama_file` varchar(50) DEFAULT NULL,
   `files` varchar(50) DEFAULT NULL,
   `tanggal` datetime DEFAULT NULL,
+  `nama_file_nilai` varchar(50) DEFAULT NULL,
+  `files_nilai` varchar(50) DEFAULT NULL,
+  `tanggal_nilai` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
--- Dumping data for table ppqc.tr_css_files: ~5 rows (approximately)
+-- Dumping data for table ppqc.tr_css_files: ~0 rows (approximately)
 DELETE FROM `tr_css_files`;
 /*!40000 ALTER TABLE `tr_css_files` DISABLE KEYS */;
-INSERT INTO `tr_css_files` (`id`, `project_id`, `nama_file`, `files`, `tanggal`) VALUES
-	(1, 13, 'Berkas 1', 'img004.jpg', NULL),
-	(2, 13, 'Tes', 'Screenshot_2.png', '2022-02-25 09:10:21'),
-	(3, 13, 'test', 'Profil Guru Nining.pdf', '2022-02-25 09:13:21'),
-	(4, 18, 'undefined', 'Screenshot_5.png', '2022-03-10 18:22:04'),
-	(5, 18, 'undefined', 'Screenshot_5.png', '2022-03-10 18:22:09');
+INSERT INTO `tr_css_files` (`id`, `project_id`, `type_css`, `lengkap`, `nama_file`, `files`, `tanggal`, `nama_file_nilai`, `files_nilai`, `tanggal_nilai`) VALUES
+	(1, 18, '2', '2', 'WhatsApp_Image_2022-09-13_at_2.15.32_PM.jpeg', '6321dbb01f61d482383355178.jpeg', '2022-09-14 13:48:32', 'SPTJM_SISWA(1).xlsx', '6321dbb7eed10498630643245.xlsx', '2022-09-14 13:48:39');
 /*!40000 ALTER TABLE `tr_css_files` ENABLE KEYS */;
+
+-- Dumping structure for table ppqc.tr_inspeksi
+DROP TABLE IF EXISTS `tr_inspeksi`;
+CREATE TABLE IF NOT EXISTS `tr_inspeksi` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `tanggal` date DEFAULT NULL,
+  `project_id` int(11) DEFAULT NULL,
+  `keterangan` text,
+  `user_id` int(11) DEFAULT NULL,
+  `type_inspeksi` enum('1','2') DEFAULT NULL COMMENT '1= Rencana, 2 = Realisasi',
+  `is_status` char(50) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+
+-- Dumping data for table ppqc.tr_inspeksi: ~7 rows (approximately)
+DELETE FROM `tr_inspeksi`;
+/*!40000 ALTER TABLE `tr_inspeksi` DISABLE KEYS */;
+INSERT INTO `tr_inspeksi` (`id`, `tanggal`, `project_id`, `keterangan`, `user_id`, `type_inspeksi`, `is_status`) VALUES
+	(1, '2022-05-13', 18, 'Oke', 8, '1', NULL),
+	(2, '2022-05-18', 18, 'Tes', 8, '1', NULL),
+	(3, '2022-05-03', 18, 'Kegiatan Visit', 8, '1', NULL),
+	(10, '2022-05-26', 18, 'Mengunjungi lokasi kejadian', 8, '1', NULL),
+	(11, '2022-05-26', 18, 'Kegiatan Tes', 8, '1', NULL),
+	(12, '2022-05-31', 18, 'Kunjungan ke 2', 8, NULL, NULL),
+	(13, '2022-11-25', 18, 'Tes', 8, NULL, NULL);
+/*!40000 ALTER TABLE `tr_inspeksi` ENABLE KEYS */;
+
+-- Dumping structure for table ppqc.tr_mwt
+DROP TABLE IF EXISTS `tr_mwt`;
+CREATE TABLE IF NOT EXISTS `tr_mwt` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `tanggal` date DEFAULT NULL,
+  `project_id` int(11) DEFAULT NULL,
+  `keterangan` text,
+  `user_id` int(11) DEFAULT NULL,
+  `is_status` char(50) DEFAULT NULL,
+  `pm_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+
+-- Dumping data for table ppqc.tr_mwt: ~0 rows (approximately)
+DELETE FROM `tr_mwt`;
+/*!40000 ALTER TABLE `tr_mwt` DISABLE KEYS */;
+INSERT INTO `tr_mwt` (`id`, `tanggal`, `project_id`, `keterangan`, `user_id`, `is_status`, `pm_id`) VALUES
+	(1, '2022-11-26', 18, 'okeeee', 8, NULL, 0),
+	(2, '2022-11-25', 18, 'mantap', 8, NULL, 90);
+/*!40000 ALTER TABLE `tr_mwt` ENABLE KEYS */;
 
 -- Dumping structure for table ppqc.tr_nc
 DROP TABLE IF EXISTS `tr_nc`;
@@ -11606,14 +11825,17 @@ CREATE TABLE IF NOT EXISTS `tr_nc` (
   `referensi` text,
   `uraian_investigasi` text,
   `disposisi_pm` varchar(100) DEFAULT NULL,
+  `created_by` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
--- Dumping data for table ppqc.tr_nc: ~0 rows (approximately)
+-- Dumping data for table ppqc.tr_nc: ~2 rows (approximately)
 DELETE FROM `tr_nc`;
 /*!40000 ALTER TABLE `tr_nc` DISABLE KEYS */;
-INSERT INTO `tr_nc` (`id`, `project_id`, `nama_project`, `nomor_nc`, `lokasi`, `uraian_temuan`, `tanggal`, `type_nc`, `level_nc`, `pekerjaan`, `tanggal_closing`, `tanggal_rencana`, `realisasi_biaya`, `sumber_nc`, `som_nc`, `gps_nc`, `sp_nc`, `mandor`, `bahan`, `alat`, `orang`, `cara`, `lingkungan`, `status_nc`, `uraian_tindak_lanjut`, `referensi`, `uraian_investigasi`, `disposisi_pm`) VALUES
-	(1, 18, 'Jembatan Penghubung PIK', '0001', 'Jakarta', 'Terjadi kebocoran', '2022-03-25', NULL, NULL, 'STRIPPING', NULL, NULL, NULL, 'Internal', 'Internal', 'Internal', 'Internal', 'Mandor', NULL, NULL, NULL, NULL, NULL, 'Open', NULL, NULL, NULL, NULL);
+INSERT INTO `tr_nc` (`id`, `project_id`, `nama_project`, `nomor_nc`, `lokasi`, `uraian_temuan`, `tanggal`, `type_nc`, `level_nc`, `pekerjaan`, `tanggal_closing`, `tanggal_rencana`, `realisasi_biaya`, `sumber_nc`, `som_nc`, `gps_nc`, `sp_nc`, `mandor`, `bahan`, `alat`, `orang`, `cara`, `lingkungan`, `status_nc`, `uraian_tindak_lanjut`, `referensi`, `uraian_investigasi`, `disposisi_pm`, `created_by`) VALUES
+	(1, 18, 'Jembatan Penghubung PIK', 'NC-001', 'Palembang', 'Temuan di palembang', '2022-06-02', 'Bocor/tidak rapat', 'Observasi', 'BOILING', '2022-06-03', '2022-06-03', 0, 'Pek. Internal', 'Internal', 'Internal', 'Internal', 'PT. ABC', 'Konsistensi', '-', '-', '-', '-', 'Closed', 'Uraian', '-', 'Uraian Investigasi', 'REJECT', 8),
+	(2, 18, 'Jembatan Penghubung PIK', 'NC-002', 'Kalimantan', 'Uraian temuan', '2022-06-08', 'Kotor', 'Observasi', 'STONE COLUMN', '2022-06-03', '2022-06-24', 0, 'Pek. Internal', 'Internal', 'Eksternal', 'Eksternal', '-', 'Ketersediaan', 'Spesifikasi Alat', '-', 'Miskomunikasi', '-', 'Closed', 'Uraian Tindak Lanjut', 'Referensi', 'Uraian Investigasi', 'REWORK', 8),
+	(3, 18, 'Jembatan Penghubung PIK', 'NC-003', 'Depok', 'Temuan', '2022-01-07', 'Permukaan tidak rata', 'Major', 'BOILING', NULL, NULL, NULL, 'Pek. Vendor', 'Internal', 'Internal', 'Eksternal', 'Mandor', 'Ketersediaan', 'Jumlah Alat', 'Pengetahuan', 'Tidak di-Review', 'Rang kerja terbatas', 'Open', NULL, '-', 'Investigasi', NULL, 8);
 /*!40000 ALTER TABLE `tr_nc` ENABLE KEYS */;
 
 -- Dumping structure for table ppqc.tr_nc_investigasi
@@ -11623,15 +11845,37 @@ CREATE TABLE IF NOT EXISTS `tr_nc_investigasi` (
   `nc_id` int(11) DEFAULT NULL,
   `file` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
 
--- Dumping data for table ppqc.tr_nc_investigasi: ~2 rows (approximately)
+-- Dumping data for table ppqc.tr_nc_investigasi: ~5 rows (approximately)
 DELETE FROM `tr_nc_investigasi`;
 /*!40000 ALTER TABLE `tr_nc_investigasi` DISABLE KEYS */;
 INSERT INTO `tr_nc_investigasi` (`id`, `nc_id`, `file`) VALUES
-	(1, 1, 'SKDU_2022.jpg'),
-	(2, 2, 'Tidak_berjudul.png');
+	(1, 1, 'Kursus_Flutter_2.png'),
+	(2, 2, 'gambar_soal_8255.png'),
+	(3, 2, 'gambar_soal_8262.png'),
+	(4, 3, 'soal_faisal.png'),
+	(5, 3, 'soal_faisal.png'),
+	(6, 3, 'db_pphadir.png');
 /*!40000 ALTER TABLE `tr_nc_investigasi` ENABLE KEYS */;
+
+-- Dumping structure for table ppqc.tr_nc_log
+DROP TABLE IF EXISTS `tr_nc_log`;
+CREATE TABLE IF NOT EXISTS `tr_nc_log` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `step` int(11) DEFAULT '0',
+  `nc_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+-- Dumping data for table ppqc.tr_nc_log: ~2 rows (approximately)
+DELETE FROM `tr_nc_log`;
+/*!40000 ALTER TABLE `tr_nc_log` DISABLE KEYS */;
+INSERT INTO `tr_nc_log` (`id`, `step`, `nc_id`) VALUES
+	(1, 3, 1),
+	(2, 3, 2),
+	(3, 2, 3);
+/*!40000 ALTER TABLE `tr_nc_log` ENABLE KEYS */;
 
 -- Dumping structure for table ppqc.tr_nc_realisasi
 DROP TABLE IF EXISTS `tr_nc_realisasi`;
@@ -11640,11 +11884,14 @@ CREATE TABLE IF NOT EXISTS `tr_nc_realisasi` (
   `nc_id` int(11) DEFAULT NULL,
   `file` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
 
--- Dumping data for table ppqc.tr_nc_realisasi: ~0 rows (approximately)
+-- Dumping data for table ppqc.tr_nc_realisasi: ~2 rows (approximately)
 DELETE FROM `tr_nc_realisasi`;
 /*!40000 ALTER TABLE `tr_nc_realisasi` DISABLE KEYS */;
+INSERT INTO `tr_nc_realisasi` (`id`, `nc_id`, `file`) VALUES
+	(1, 2, 'Screenshot_16.png'),
+	(2, 1, 'gambar_soal_8256.png');
 /*!40000 ALTER TABLE `tr_nc_realisasi` ENABLE KEYS */;
 
 -- Dumping structure for table ppqc.tr_nc_rekap_close
@@ -11656,22 +11903,42 @@ CREATE TABLE IF NOT EXISTS `tr_nc_rekap_close` (
   `bulan` int(11) DEFAULT NULL,
   `tahun` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
 
--- Dumping data for table ppqc.tr_nc_rekap_close: ~10 rows (approximately)
+-- Dumping data for table ppqc.tr_nc_rekap_close: ~30 rows (approximately)
 DELETE FROM `tr_nc_rekap_close`;
 /*!40000 ALTER TABLE `tr_nc_rekap_close` DISABLE KEYS */;
 INSERT INTO `tr_nc_rekap_close` (`id`, `project_id`, `total`, `bulan`, `tahun`) VALUES
-	(1, 18, 0, 1, 2022),
+	(1, 18, 1, 1, 2022),
 	(2, 18, 0, 2, 2022),
-	(3, 18, 0, 3, 2022),
-	(4, 18, 0, 4, 2022),
-	(5, 18, 0, 5, 2022),
-	(6, 18, 0, 6, 2022),
+	(3, 18, 1, 3, 2022),
+	(4, 18, 1, 4, 2022),
+	(5, 18, 1, 5, 2022),
+	(6, 18, 1, 6, 2022),
 	(7, 18, 0, 7, 2022),
 	(8, 18, 0, 8, 2022),
 	(9, 18, 0, 9, 2022),
-	(10, 18, 0, 10, 2022);
+	(10, 18, 0, 10, 2022),
+	(11, 14, 0, 1, 2022),
+	(12, 14, 0, 2, 2022),
+	(13, 14, 0, 3, 2022),
+	(14, 14, 0, 4, 2022),
+	(15, 14, 0, 5, 2022),
+	(16, 14, 0, 6, 2022),
+	(17, 14, 0, 7, 2022),
+	(18, 14, 0, 8, 2022),
+	(19, 14, 0, 9, 2022),
+	(20, 14, 0, 10, 2022),
+	(21, 35, 0, 1, 2022),
+	(22, 35, 0, 2, 2022),
+	(23, 35, 0, 3, 2022),
+	(24, 35, 0, 4, 2022),
+	(25, 35, 0, 5, 2022),
+	(26, 35, 0, 6, 2022),
+	(27, 35, 0, 7, 2022),
+	(28, 35, 0, 8, 2022),
+	(29, 35, 0, 9, 2022),
+	(30, 35, 0, 10, 2022);
 /*!40000 ALTER TABLE `tr_nc_rekap_close` ENABLE KEYS */;
 
 -- Dumping structure for table ppqc.tr_nc_rekap_open
@@ -11683,22 +11950,42 @@ CREATE TABLE IF NOT EXISTS `tr_nc_rekap_open` (
   `bulan` int(11) DEFAULT NULL,
   `tahun` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=latin1;
 
--- Dumping data for table ppqc.tr_nc_rekap_open: ~10 rows (approximately)
+-- Dumping data for table ppqc.tr_nc_rekap_open: ~27 rows (approximately)
 DELETE FROM `tr_nc_rekap_open`;
 /*!40000 ALTER TABLE `tr_nc_rekap_open` DISABLE KEYS */;
 INSERT INTO `tr_nc_rekap_open` (`id`, `project_id`, `total`, `bulan`, `tahun`) VALUES
-	(1, 18, 0, 1, 2022),
+	(1, 18, 1, 1, 2022),
 	(2, 18, 0, 2, 2022),
 	(3, 18, 1, 3, 2022),
-	(4, 18, 0, 4, 2022),
-	(5, 18, 0, 5, 2022),
-	(6, 18, 0, 6, 2022),
+	(4, 18, 1, 4, 2022),
+	(5, 18, 1, 5, 2022),
+	(6, 18, 1, 6, 2022),
 	(7, 18, 0, 7, 2022),
 	(8, 18, 0, 8, 2022),
 	(9, 18, 0, 9, 2022),
-	(10, 18, 0, 10, 2022);
+	(10, 18, 0, 10, 2022),
+	(11, 14, 0, 1, 2022),
+	(12, 14, 0, 2, 2022),
+	(13, 14, 0, 3, 2022),
+	(14, 14, 0, 4, 2022),
+	(15, 14, 0, 5, 2022),
+	(16, 14, 0, 6, 2022),
+	(17, 14, 0, 7, 2022),
+	(18, 14, 0, 8, 2022),
+	(19, 14, 0, 9, 2022),
+	(20, 14, 0, 10, 2022),
+	(21, 35, 0, 1, 2022),
+	(22, 35, 0, 2, 2022),
+	(23, 35, 0, 3, 2022),
+	(24, 35, 0, 4, 2022),
+	(25, 35, 0, 5, 2022),
+	(26, 35, 0, 6, 2022),
+	(27, 35, 0, 7, 2022),
+	(28, 35, 0, 8, 2022),
+	(29, 35, 0, 9, 2022),
+	(30, 35, 0, 10, 2022);
 /*!40000 ALTER TABLE `tr_nc_rekap_open` ENABLE KEYS */;
 
 -- Dumping structure for table ppqc.tr_nc_temuan
@@ -11708,18 +11995,15 @@ CREATE TABLE IF NOT EXISTS `tr_nc_temuan` (
   `nc_id` int(11) DEFAULT NULL,
   `file` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
--- Dumping data for table ppqc.tr_nc_temuan: ~5 rows (approximately)
+-- Dumping data for table ppqc.tr_nc_temuan: ~2 rows (approximately)
 DELETE FROM `tr_nc_temuan`;
 /*!40000 ALTER TABLE `tr_nc_temuan` DISABLE KEYS */;
 INSERT INTO `tr_nc_temuan` (`id`, `nc_id`, `file`) VALUES
-	(1, 1, 'SKDU_2022.jpg'),
-	(2, 1, 'SKDU_2022.jpg'),
-	(3, 2, 'aisyah.jpg'),
-	(4, 7, 'WhatsApp_Image_2022-03-22_at_12.06.29.jpeg'),
-	(5, 1, 'SKDU_2022.jpg'),
-	(6, 1, 'Tidak_berjudul.png');
+	(1, 1, 'excellent1.png'),
+	(2, 2, 'Kursus_Flutter_2.png'),
+	(3, 3, '2021-08-02-12-39-53-01.jpg');
 /*!40000 ALTER TABLE `tr_nc_temuan` ENABLE KEYS */;
 
 -- Dumping structure for table ppqc.tr_nilai_qsia
@@ -11728,191 +12012,145 @@ CREATE TABLE IF NOT EXISTS `tr_nilai_qsia` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nilai_id` int(11) DEFAULT NULL,
   `nilai_item_id` int(11) DEFAULT NULL,
-  `nilai` int(11) DEFAULT NULL,
+  `nilai` int(11) DEFAULT '-1',
+  `nilai_maksimal` int(11) DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL,
   `project_id` int(11) DEFAULT NULL,
+  `tanggal` date DEFAULT NULL,
+  `tabul` char(6) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=176 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=127 DEFAULT CHARSET=latin1;
 
--- Dumping data for table ppqc.tr_nilai_qsia: ~173 rows (approximately)
+-- Dumping data for table ppqc.tr_nilai_qsia: ~126 rows (approximately)
 DELETE FROM `tr_nilai_qsia`;
 /*!40000 ALTER TABLE `tr_nilai_qsia` DISABLE KEYS */;
-INSERT INTO `tr_nilai_qsia` (`id`, `nilai_id`, `nilai_item_id`, `nilai`, `user_id`, `project_id`) VALUES
-	(1, 1, 1, 4, NULL, 3),
-	(2, 1, 2, 3, NULL, 3),
-	(3, 1, 3, 1, NULL, 3),
-	(4, 1, 4, 2, NULL, 3),
-	(5, 1, 5, 0, NULL, 3),
-	(6, 1, 6, 0, NULL, 3),
-	(7, 1, 7, 0, NULL, 3),
-	(8, 1, 8, 0, NULL, 3),
-	(9, 2, 9, 0, NULL, 3),
-	(10, 2, 10, 0, NULL, 3),
-	(11, 2, 11, 0, NULL, 3),
-	(12, 2, 12, 0, NULL, 3),
-	(13, 2, 13, 0, NULL, 3),
-	(14, 2, 14, 0, NULL, 3),
-	(15, 2, 15, 0, NULL, 3),
-	(16, 2, 16, 0, NULL, 3),
-	(17, 3, 17, 0, NULL, 3),
-	(18, 3, 18, 0, NULL, 3),
-	(19, 3, 19, 0, NULL, 3),
-	(20, 3, 20, 0, NULL, 3),
-	(21, 3, 21, 0, NULL, 3),
-	(22, 3, 22, 0, NULL, 3),
-	(23, 3, 23, 0, NULL, 3),
-	(24, 3, 24, 0, NULL, 3),
-	(25, 3, 25, 0, NULL, 3),
-	(26, 3, 26, 0, NULL, 3),
-	(27, 3, 27, 0, NULL, 3),
-	(28, 3, 28, 0, NULL, 3),
-	(29, 4, 29, 0, NULL, 3),
-	(30, 4, 30, 0, NULL, 3),
-	(31, 4, 31, 0, NULL, 3),
-	(32, 4, 32, 0, NULL, 3),
-	(33, 4, 33, 0, NULL, 3),
-	(34, 4, 34, 0, NULL, 3),
-	(35, 4, 35, 0, NULL, 3),
-	(36, 5, 36, 0, NULL, 3),
-	(37, 5, 37, 0, NULL, 3),
-	(38, 5, 38, 0, NULL, 3),
-	(39, 5, 39, 0, NULL, 3),
-	(40, 5, 40, 0, NULL, 3),
-	(41, 5, 41, 0, NULL, 3),
-	(42, 5, 42, 0, NULL, 3),
-	(43, 1, 1, 0, NULL, 2),
-	(44, 1, 2, 0, NULL, 2),
-	(45, 1, 3, 0, NULL, 2),
-	(46, 1, 4, 0, NULL, 2),
-	(47, 1, 5, 0, NULL, 2),
-	(48, 1, 6, 0, NULL, 2),
-	(49, 1, 7, 0, NULL, 2),
-	(50, 1, 8, 0, NULL, 2),
-	(51, 2, 9, 0, NULL, 2),
-	(52, 2, 10, 0, NULL, 2),
-	(53, 2, 11, 0, NULL, 2),
-	(54, 2, 12, 0, NULL, 2),
-	(55, 2, 13, 0, NULL, 2),
-	(56, 2, 14, 0, NULL, 2),
-	(57, 2, 15, 0, NULL, 2),
-	(58, 2, 16, 0, NULL, 2),
-	(59, 3, 17, 0, NULL, 2),
-	(60, 3, 18, 0, NULL, 2),
-	(61, 3, 19, 0, NULL, 2),
-	(62, 3, 20, 0, NULL, 2),
-	(63, 3, 21, 0, NULL, 2),
-	(64, 3, 22, 0, NULL, 2),
-	(65, 3, 23, 0, NULL, 2),
-	(66, 3, 24, 0, NULL, 2),
-	(67, 3, 25, 0, NULL, 2),
-	(68, 3, 26, 0, NULL, 2),
-	(69, 3, 27, 0, NULL, 2),
-	(70, 3, 28, 0, NULL, 2),
-	(71, 4, 29, 0, NULL, 2),
-	(72, 4, 30, 0, NULL, 2),
-	(73, 4, 31, 0, NULL, 2),
-	(74, 4, 32, 0, NULL, 2),
-	(75, 4, 33, 0, NULL, 2),
-	(76, 4, 34, 0, NULL, 2),
-	(77, 4, 35, 0, NULL, 2),
-	(78, 5, 36, 0, NULL, 2),
-	(79, 5, 37, 0, NULL, 2),
-	(80, 5, 38, 0, NULL, 2),
-	(81, 5, 39, 0, NULL, 2),
-	(82, 5, 40, 0, NULL, 2),
-	(83, 5, 41, 0, NULL, 2),
-	(84, 5, 42, 0, NULL, 2),
-	(85, NULL, NULL, 1, NULL, NULL),
-	(86, 1, 1, 0, NULL, 78),
-	(87, 1, 2, 0, NULL, 78),
-	(88, 1, 3, 0, NULL, 78),
-	(89, 1, 4, 0, NULL, 78),
-	(90, 1, 5, 0, NULL, 78),
-	(91, 1, 6, 0, NULL, 78),
-	(92, 1, 7, 0, NULL, 78),
-	(93, 1, 8, 0, NULL, 78),
-	(94, 2, 9, 0, NULL, 78),
-	(95, 2, 10, 0, NULL, 78),
-	(96, 2, 11, 0, NULL, 78),
-	(97, 2, 12, 0, NULL, 78),
-	(98, 2, 13, 0, NULL, 78),
-	(99, 2, 14, 0, NULL, 78),
-	(100, 2, 15, 0, NULL, 78),
-	(101, 2, 16, 0, NULL, 78),
-	(102, 3, 17, 0, NULL, 78),
-	(103, 3, 18, 0, NULL, 78),
-	(104, 3, 19, 0, NULL, 78),
-	(105, 3, 20, 0, NULL, 78),
-	(106, 3, 21, 0, NULL, 78),
-	(107, 3, 22, 0, NULL, 78),
-	(108, 3, 23, 0, NULL, 78),
-	(109, 3, 24, 0, NULL, 78),
-	(110, 3, 25, 0, NULL, 78),
-	(111, 3, 26, 0, NULL, 78),
-	(112, 3, 27, 0, NULL, 78),
-	(113, 3, 28, 0, NULL, 78),
-	(114, 4, 29, 0, NULL, 78),
-	(115, 4, 30, 0, NULL, 78),
-	(116, 4, 31, 0, NULL, 78),
-	(117, 4, 32, 0, NULL, 78),
-	(118, 4, 33, 0, NULL, 78),
-	(119, 4, 34, 0, NULL, 78),
-	(120, 4, 35, 0, NULL, 78),
-	(121, 5, 36, 0, NULL, 78),
-	(122, 5, 37, 0, NULL, 78),
-	(123, 5, 38, 0, NULL, 78),
-	(124, 5, 39, 0, NULL, 78),
-	(125, 5, 40, 0, NULL, 78),
-	(126, 5, 41, 0, NULL, 78),
-	(127, 5, 42, 0, NULL, 78),
-	(128, NULL, NULL, 0, NULL, 13),
-	(129, NULL, NULL, 0, NULL, 35),
-	(130, NULL, NULL, 1, NULL, 78),
-	(131, NULL, NULL, 0, NULL, 65),
-	(132, 1, 1, 0, NULL, 18),
-	(133, 1, 2, 0, NULL, 18),
-	(134, 1, 3, 0, NULL, 18),
-	(135, 1, 4, 0, NULL, 18),
-	(136, 1, 5, 0, NULL, 18),
-	(137, 1, 6, 0, NULL, 18),
-	(138, 1, 7, 0, NULL, 18),
-	(139, 1, 8, 0, NULL, 18),
-	(140, 2, 9, 0, NULL, 18),
-	(141, 2, 10, 0, NULL, 18),
-	(142, 2, 11, 0, NULL, 18),
-	(143, 2, 12, 0, NULL, 18),
-	(144, 2, 13, 0, NULL, 18),
-	(145, 2, 14, 0, NULL, 18),
-	(146, 2, 15, 0, NULL, 18),
-	(147, 2, 16, 0, NULL, 18),
-	(148, 3, 17, 0, NULL, 18),
-	(149, 3, 18, 0, NULL, 18),
-	(150, 3, 19, 0, NULL, 18),
-	(151, 3, 20, 0, NULL, 18),
-	(152, 3, 21, 0, NULL, 18),
-	(153, 3, 22, 0, NULL, 18),
-	(154, 3, 23, 0, NULL, 18),
-	(155, 3, 24, 0, NULL, 18),
-	(156, 3, 25, 0, NULL, 18),
-	(157, 3, 26, 0, NULL, 18),
-	(158, 3, 27, 0, NULL, 18),
-	(159, 3, 28, 0, NULL, 18),
-	(160, 4, 29, 0, NULL, 18),
-	(161, 4, 30, 0, NULL, 18),
-	(162, 4, 31, 0, NULL, 18),
-	(163, 4, 32, 0, NULL, 18),
-	(164, 4, 33, 0, NULL, 18),
-	(165, 4, 34, 0, NULL, 18),
-	(166, 4, 35, 0, NULL, 18),
-	(167, 5, 36, 0, NULL, 18),
-	(168, 5, 37, 0, NULL, 18),
-	(169, 5, 38, 0, NULL, 18),
-	(170, 5, 39, 0, NULL, 18),
-	(171, 5, 40, 0, NULL, 18),
-	(172, 5, 41, 0, NULL, 18),
-	(173, 5, 42, 0, NULL, 18),
-	(174, NULL, 0, 0, NULL, 18),
-	(175, NULL, NULL, 2, NULL, 18);
+INSERT INTO `tr_nilai_qsia` (`id`, `nilai_id`, `nilai_item_id`, `nilai`, `nilai_maksimal`, `user_id`, `project_id`, `tanggal`, `tabul`) VALUES
+	(1, 1, 1, 1, 4, 8, 18, '2022-06-12', '202206'),
+	(2, 1, 2, 1, 4, 8, 18, '2022-06-12', '202206'),
+	(3, 1, 3, 1, 4, 8, 18, '2022-06-12', '202206'),
+	(4, 1, 4, 4, 4, 8, 18, '2022-06-15', '202206'),
+	(5, 1, 5, 1, 4, 8, 18, '2022-06-12', '202206'),
+	(6, 1, 6, 4, 4, 8, 18, '2022-06-15', '202206'),
+	(7, 1, 7, 3, 4, 8, 18, '2022-06-15', '202206'),
+	(8, 1, 8, 1, 4, 8, 18, '2022-06-12', '202206'),
+	(9, 2, 9, 4, 4, 8, 18, '2022-06-17', '202206'),
+	(10, 2, 10, 4, 4, 8, 18, '2022-06-17', '202206'),
+	(11, 2, 11, 4, 4, 8, 18, '2022-06-17', '202206'),
+	(12, 2, 12, 1, 4, 8, 18, '2022-06-13', '202206'),
+	(13, 2, 13, 3, 4, 8, 18, '2022-06-17', '202206'),
+	(14, 2, 14, 3, 4, 8, 18, '2022-06-17', '202206'),
+	(15, 2, 15, 1, 4, 8, 18, '2022-06-17', '202206'),
+	(16, 2, 16, 4, 4, 8, 18, '2022-06-17', '202206'),
+	(17, 3, 17, 3, 4, 8, 18, '2022-06-14', '202206'),
+	(18, 3, 18, -1, 0, 8, 18, NULL, '202206'),
+	(19, 3, 19, -1, 0, 8, 18, NULL, '202206'),
+	(20, 3, 20, -1, 0, 8, 18, NULL, '202206'),
+	(21, 3, 21, -1, 0, 8, 18, NULL, '202206'),
+	(22, 3, 22, -1, 0, 8, 18, NULL, '202206'),
+	(23, 3, 23, -1, 0, 8, 18, NULL, '202206'),
+	(24, 3, 24, -1, 0, 8, 18, NULL, '202206'),
+	(25, 3, 25, -1, 0, 8, 18, NULL, '202206'),
+	(26, 3, 26, -1, 0, 8, 18, NULL, '202206'),
+	(27, 3, 27, -1, 0, 8, 18, NULL, '202206'),
+	(28, 3, 28, 4, 4, 8, 18, '2022-06-14', '202206'),
+	(29, 4, 29, -1, 0, 8, 18, NULL, '202206'),
+	(30, 4, 30, -1, 0, 8, 18, NULL, '202206'),
+	(31, 4, 31, -1, 0, 8, 18, NULL, '202206'),
+	(32, 4, 32, -1, 0, 8, 18, NULL, '202206'),
+	(33, 4, 33, -1, 0, 8, 18, NULL, '202206'),
+	(34, 4, 34, 4, 4, 8, 18, '2022-06-13', '202206'),
+	(35, 4, 35, -1, 0, 8, 18, NULL, '202206'),
+	(36, 5, 36, 3, 4, 8, 18, '2022-06-13', '202206'),
+	(37, 5, 37, -1, 0, 8, 18, NULL, '202206'),
+	(38, 5, 38, 0, 4, 8, 18, '2022-06-13', '202206'),
+	(39, 5, 39, 1, 4, 8, 18, '2022-06-13', '202206'),
+	(40, 5, 40, -1, 0, 8, 18, NULL, '202206'),
+	(41, 5, 41, -1, 0, 8, 18, NULL, '202206'),
+	(42, 5, 42, 3, 4, 8, 18, '2022-06-14', '202206'),
+	(43, 1, 1, 1, 4, 8, 18, '2022-06-12', '202205'),
+	(44, 1, 2, 3, 4, 8, 18, '2022-06-16', '202205'),
+	(45, 1, 3, -1, 0, 8, 18, NULL, '202205'),
+	(46, 1, 4, -1, 0, 8, 18, NULL, '202205'),
+	(47, 1, 5, -1, 0, 8, 18, NULL, '202205'),
+	(48, 1, 6, 1, 4, 8, 18, '2022-06-16', '202205'),
+	(49, 1, 7, 4, 4, 8, 18, '2022-06-16', '202205'),
+	(50, 1, 8, 3, 4, 8, 18, '2022-06-16', '202205'),
+	(51, 2, 9, 3, 4, 8, 18, '2022-06-14', '202205'),
+	(52, 2, 10, 3, 4, 8, 18, '2022-06-14', '202205'),
+	(53, 2, 11, -1, 0, 8, 18, NULL, '202205'),
+	(54, 2, 12, -1, 0, 8, 18, NULL, '202205'),
+	(55, 2, 13, -1, 0, 8, 18, NULL, '202205'),
+	(56, 2, 14, -1, 0, 8, 18, NULL, '202205'),
+	(57, 2, 15, -1, 0, 8, 18, NULL, '202205'),
+	(58, 2, 16, 1, 4, 8, 18, '2022-06-14', '202205'),
+	(59, 3, 17, 4, 4, 8, 18, '2022-06-15', '202205'),
+	(60, 3, 18, 4, 4, 8, 18, '2022-06-15', '202205'),
+	(61, 3, 19, 4, 4, 8, 18, '2022-06-15', '202205'),
+	(62, 3, 20, 4, 4, 8, 18, '2022-06-15', '202205'),
+	(63, 3, 21, 4, 4, 8, 18, '2022-06-15', '202205'),
+	(64, 3, 22, 4, 4, 8, 18, '2022-06-15', '202205'),
+	(65, 3, 23, 4, 4, 8, 18, '2022-06-15', '202205'),
+	(66, 3, 24, 4, 4, 8, 18, '2022-06-15', '202205'),
+	(67, 3, 25, 4, 4, 8, 18, '2022-06-15', '202205'),
+	(68, 3, 26, 4, 4, 8, 18, '2022-06-15', '202205'),
+	(69, 3, 27, 4, 4, 8, 18, '2022-06-15', '202205'),
+	(70, 3, 28, 4, 4, 8, 18, '2022-06-15', '202205'),
+	(71, 4, 29, -1, 0, 8, 18, NULL, '202205'),
+	(72, 4, 30, -1, 0, 8, 18, NULL, '202205'),
+	(73, 4, 31, -1, 0, 8, 18, NULL, '202205'),
+	(74, 4, 32, 3, 4, 8, 18, '2022-06-14', '202205'),
+	(75, 4, 33, -1, 0, 8, 18, NULL, '202205'),
+	(76, 4, 34, 1, 4, 8, 18, '2022-06-14', '202205'),
+	(77, 4, 35, -1, 0, 8, 18, NULL, '202205'),
+	(78, 5, 36, -1, 0, 8, 18, NULL, '202205'),
+	(79, 5, 37, -1, 0, 8, 18, NULL, '202205'),
+	(80, 5, 38, -1, 0, 8, 18, NULL, '202205'),
+	(81, 5, 39, -1, 0, 8, 18, NULL, '202205'),
+	(82, 5, 40, -1, 0, 8, 18, NULL, '202205'),
+	(83, 5, 41, -1, 0, 8, 18, NULL, '202205'),
+	(84, 5, 42, 4, 4, 8, 18, '2022-06-12', '202205'),
+	(85, 1, 1, 1, 4, 10, 35, '2022-11-09', '202211'),
+	(86, 1, 2, -1, 0, 10, 35, NULL, '202211'),
+	(87, 1, 3, -1, 0, 10, 35, NULL, '202211'),
+	(88, 1, 4, -1, 0, 10, 35, NULL, '202211'),
+	(89, 1, 5, -1, 0, 10, 35, NULL, '202211'),
+	(90, 1, 6, -1, 0, 10, 35, NULL, '202211'),
+	(91, 1, 7, -1, 0, 10, 35, NULL, '202211'),
+	(92, 1, 8, -1, 0, 10, 35, NULL, '202211'),
+	(93, 2, 9, -1, 0, 10, 35, NULL, '202211'),
+	(94, 2, 10, 3, 4, 10, 35, '2022-11-09', '202211'),
+	(95, 2, 11, -1, 0, 10, 35, NULL, '202211'),
+	(96, 2, 12, -1, 0, 10, 35, NULL, '202211'),
+	(97, 2, 13, -1, 0, 10, 35, NULL, '202211'),
+	(98, 2, 14, -1, 0, 10, 35, NULL, '202211'),
+	(99, 2, 15, -1, 0, 10, 35, NULL, '202211'),
+	(100, 2, 16, -1, 0, 10, 35, NULL, '202211'),
+	(101, 3, 17, 4, 4, 10, 35, '2022-11-09', '202211'),
+	(102, 3, 18, -1, 0, 10, 35, NULL, '202211'),
+	(103, 3, 19, -1, 0, 10, 35, NULL, '202211'),
+	(104, 3, 20, -1, 0, 10, 35, NULL, '202211'),
+	(105, 3, 21, -1, 0, 10, 35, NULL, '202211'),
+	(106, 3, 22, -1, 0, 10, 35, NULL, '202211'),
+	(107, 3, 23, -1, 0, 10, 35, NULL, '202211'),
+	(108, 3, 24, -1, 0, 10, 35, NULL, '202211'),
+	(109, 3, 25, -1, 0, 10, 35, NULL, '202211'),
+	(110, 3, 26, -1, 0, 10, 35, NULL, '202211'),
+	(111, 3, 27, -1, 0, 10, 35, NULL, '202211'),
+	(112, 3, 28, -1, 0, 10, 35, NULL, '202211'),
+	(113, 4, 29, -1, 0, 10, 35, NULL, '202211'),
+	(114, 4, 30, -1, 0, 10, 35, NULL, '202211'),
+	(115, 4, 31, -1, 0, 10, 35, NULL, '202211'),
+	(116, 4, 32, 3, 4, 10, 35, '2022-11-09', '202211'),
+	(117, 4, 33, -1, 0, 10, 35, NULL, '202211'),
+	(118, 4, 34, -1, 0, 10, 35, NULL, '202211'),
+	(119, 4, 35, -1, 0, 10, 35, NULL, '202211'),
+	(120, 5, 36, -1, 0, 10, 35, NULL, '202211'),
+	(121, 5, 37, -1, 0, 10, 35, NULL, '202211'),
+	(122, 5, 38, 1, 4, 10, 35, '2022-11-09', '202211'),
+	(123, 5, 39, -1, 0, 10, 35, NULL, '202211'),
+	(124, 5, 40, -1, 0, 10, 35, NULL, '202211'),
+	(125, 5, 41, -1, 0, 10, 35, NULL, '202211'),
+	(126, 5, 42, 3, 4, 10, 35, '2022-11-09', '202211');
 /*!40000 ALTER TABLE `tr_nilai_qsia` ENABLE KEYS */;
 
 -- Dumping structure for table ppqc.tr_observasi
@@ -11925,42 +12163,19 @@ CREATE TABLE IF NOT EXISTS `tr_observasi` (
   `dampak_masalah` text,
   `uraian_potensi_masalah` text,
   `created_by` int(11) DEFAULT NULL,
+  `level` enum('1','2','3','4') DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
--- Dumping data for table ppqc.tr_observasi: ~0 rows (approximately)
+-- Dumping data for table ppqc.tr_observasi: ~4 rows (approximately)
 DELETE FROM `tr_observasi`;
 /*!40000 ALTER TABLE `tr_observasi` DISABLE KEYS */;
-INSERT INTO `tr_observasi` (`id`, `project_id`, `pekerjaan_id`, `tanggal`, `dampak_masalah`, `uraian_potensi_masalah`, `created_by`) VALUES
-	(1, 13, 3, '2022-03-25', 'Kebocoran', 'Penyebab kebocoran', 1);
+INSERT INTO `tr_observasi` (`id`, `project_id`, `pekerjaan_id`, `tanggal`, `dampak_masalah`, `uraian_potensi_masalah`, `created_by`, `level`) VALUES
+	(1, 13, 3, '2022-03-25', 'Kebocoran', 'Penyebab kebocoran', 1, '4'),
+	(2, 18, 1, '2022-03-29', 'Dampak Masalah', 'Potensi Masalah', 8, NULL),
+	(3, 18, 1, '2022-03-30', 'Dampak Masalah', 'Uraian potensi masalah', 8, NULL),
+	(6, 18, 4, '2022-05-20', 'Masalah besar', 'Akan terjadi kebakaran hutan', 8, NULL);
 /*!40000 ALTER TABLE `tr_observasi` ENABLE KEYS */;
-
--- Dumping structure for table ppqc.tr_qa
-DROP TABLE IF EXISTS `tr_qa`;
-CREATE TABLE IF NOT EXISTS `tr_qa` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `project_id` int(11) DEFAULT NULL,
-  `nama_project` varchar(200) DEFAULT NULL,
-  `vendor_id` int(11) DEFAULT NULL,
-  `pekerjaan_id` int(11) DEFAULT NULL,
-  `nama_pekerjaan` varchar(200) DEFAULT NULL,
-  `nama_vendor` varchar(200) DEFAULT NULL,
-  `satuan_pekerjaan` varchar(50) DEFAULT NULL,
-  `nilai_pekerjaan` int(11) DEFAULT NULL,
-  `nc_pekerjaan` varchar(50) DEFAULT NULL,
-  `nilai_vendor` int(11) DEFAULT NULL,
-  `nc_vendor` varchar(50) DEFAULT NULL,
-  `user_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
-
--- Dumping data for table ppqc.tr_qa: ~2 rows (approximately)
-DELETE FROM `tr_qa`;
-/*!40000 ALTER TABLE `tr_qa` DISABLE KEYS */;
-INSERT INTO `tr_qa` (`id`, `project_id`, `nama_project`, `vendor_id`, `pekerjaan_id`, `nama_pekerjaan`, `nama_vendor`, `satuan_pekerjaan`, `nilai_pekerjaan`, `nc_pekerjaan`, `nilai_vendor`, `nc_vendor`, `user_id`) VALUES
-	(1, NULL, NULL, NULL, NULL, 'Pekerjaan 1', 'PT. ABC', 'a', 4, '7', 8, '88', 1),
-	(2, NULL, NULL, NULL, NULL, 'Pekerjaan 2', 'PT. HARIBIMA', 'A', 10, '009', 20, '009', 0);
-/*!40000 ALTER TABLE `tr_qa` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
