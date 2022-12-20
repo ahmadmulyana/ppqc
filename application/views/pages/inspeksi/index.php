@@ -36,7 +36,7 @@
                                             <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                <h5 class="modal-title" id="centerModalLabel">Add Agenda</h5>
+                                                <h5 class="modal-title" id="centerModalLabel">Add Agenda Rencana</h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body text-left">
@@ -62,7 +62,7 @@
                                                         <div class="row mb-3">
                                                             <div class="form-group col-md-12">
                                                                 <label>Deskripsi</label>
-                                                                <textarea name="keterangan" class="form-control" rows="4"></textarea>
+                                                                <textarea name="keterangan" class="form-control" rows="3"></textarea>
                                                             </div>
                                                         </div>
                                                         <div class="row mb-3">
@@ -94,51 +94,55 @@
                                             <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                <h5 class="modal-title" id="centerModalLabel">Add Agenda</h5>
+                                                <h5 class="modal-title" id="centerModalLabel">Add Agenda MWT</h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body text-left">
-                                                    <form>
+                                                    <?=form_open('inspeksi/savemwt/', array('method'=>'post'));?>
                                                         <div class="row mb-3">
                                                             <div class="form-group col-md-12">
                                                                 <label>Proyek</label>
-                                                                <select class="form-select">
-                                                                    <option selected>Pilih salah satu</option>
-                                                                    <option value="1">One</option>
+                                                                <select name="project" class="form-control">
+                                                                    <option selected>--Pilih--</option>
+                                                                    <?php foreach ($project as $r) { ?>
+                                                                        <option value="<?= $r->id?>"><?= $r->nama_proyek ?></option>    
+                                                                    <?php } ?>
                                                                 </select>
+
                                                             </div>
                                                         </div>
                                                         <div class="row mb-3">
                                                             <div class="form-group col-md-12">
                                                                 <label>Deskripsi</label>
-                                                                <textarea class="form-control" rows="4"></textarea>
+                                                                <textarea name="keterangan" class="form-control" rows="3"></textarea>
                                                             </div>
                                                         </div>
                                                         <div class="row mb-3">
                                                             <div class="form-group col-md-12">
                                                                 <label>Tanggal Inspeksi</label>
-                                                                <input type="date" class="form-control" name="">
+                                                                <input type="date" class="form-control" name="tanggal">
                                                             </div>
                                                         </div>
                                                         <div class="row mb-3">
                                                             <div class="form-group col-md-12">
-                                                                <label>Nama</label>
-                                                                <select class="form-select">
-                                                                    <option selected>Pilih salah satu</option>
-                                                                    <option value="1">One</option>
+                                                                <label>Nama PM</label>
+                                                                <select name="pm" class="form-control">
+                                                                    <option selected>--Pilih--</option>
+                                                                    <?php foreach ($pm as $r) { ?>
+                                                                        <option value="<?= $r->id?>"><?= $r->nama_lengkap ?></option>    
+                                                                    <?php } ?>
                                                                 </select>
                                                             </div>
                                                         </div>
 
-                                                        <div class="row mb-3">
-                                                            <div class="form-group col-md-3">
-                                                                <a href="#" class="btn btn-primary" role="button" type="submit">Submit</a>
+                                                        <div class="row mb-6">
+                                                            <div class="form-group col-md-6">
+                                                                <input class="btn btn-primary"  type="submit" name="submit" value="Submit" role="button">
+
+                                                                <button type="button" data-bs-dismiss="modal" class="btn btn-danger">Cancel</button>
                                                             </div>
                                                         </div>
                                                     </form>
-                                                </div>
-                                                <div class="modal-footer">
-                                                <button type="button" data-bs-dismiss="modal" class="btn btn-transparent">Cancel</button>
                                                 </div>
                                             </div>
                                             </div>
@@ -149,9 +153,9 @@
                                     if ($this->session->userdata('admin_level')=='3'){ ?>
                                     
                                     <div class="w-100 mb-2">
-                                        <a data-bs-toggle="modal" data-bs-target="#realisasiinspeksi" style="cursor: pointer;" class="btn btn-green w-100">
+                                        <!-- <a data-bs-toggle="modal" data-bs-target="#realisasiinspeksi" style="cursor: pointer;" class="btn btn-green w-100">
                                             Realisasi Inspeksi
-                                        </a>
+                                        </a> -->
                                         <!-- Modal -->
                                         <div class="modal fade" id="realisasiinspeksi" tabindex="-1" aria-labelledby="centerModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered">
@@ -243,8 +247,19 @@
         ];
     }
 
+    $arr_mwt = array();
+    foreach ($mwt as $a) {
+        $arr_mwt[] = [
+            'title' => $a->keterangan,
+            'start' => $a->tanggal
+        ];
+    }
+
+    $data = array_merge($arr,$arr_mwt);
+
 ?>
 <script>
+
 
   document.addEventListener('DOMContentLoaded', function() {
     var calendarEl = document.getElementById('calendar');
@@ -254,7 +269,7 @@
       selectable: true,
       businessHours: true,
       dayMaxEvents: true, 
-      events: <?= json_encode($arr); ?>
+      events: <?= json_encode($data); ?>
     });
 
     calendar.render();

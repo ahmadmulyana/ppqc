@@ -103,7 +103,7 @@
                                         <tfoot>
                                             <tr>
                                                 <td class="text-primary fw-bolder" colspan="2">TOTAL KESELURUHAN</td>
-                                                <td class="text-primary fw-bolder"><?= ($prosentase_total/$jml_data); ?>%</td>
+                                                <td class="text-primary fw-bolder"><?= $prosentase_total == 0 ? '' : ($prosentase_total/$jml_data).' %'; ?></td>
                                                 <td></td>
                                             </tr>
                                         </tfoot>

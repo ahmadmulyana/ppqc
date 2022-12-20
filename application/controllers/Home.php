@@ -100,13 +100,7 @@ class Home extends CI_Controller {
 	}
 	// end user
 	
-	public function validasi()
-	{
-		$data['page'] = 'validasi';
-		$this->load->view('template/header', $data);
-		$this->load->view('pages/inspeksi/validasi', $data);
-		$this->load->view('template/footer', $data);
-	}
+	
 
 	// profile
 	public function profile()

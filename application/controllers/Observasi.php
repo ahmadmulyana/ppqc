@@ -75,4 +75,21 @@ class Observasi extends CI_Controller {
 		
 	}
 
+	public function update() {
+		$id = $this->input->post('id');
+		$level = $this->input->post('level');
+
+		$ket 	= "";
+		$tgl = date('Y-m-d');
+
+		$user_id = $this->session->userdata('admin_id');
+
+		$this->db->query("UPDATE tr_observasi SET level = '".$level."'
+							WHERE id = '".$id."'");
+		
+		$ret_arr['status'] 	= "ok";
+		$ret_arr['caption']	= $ket." sukses";
+		j($ret_arr);
+	}
+
 }
