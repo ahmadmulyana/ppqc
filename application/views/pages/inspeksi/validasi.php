@@ -25,8 +25,8 @@
                                         <th>#</th>
                                         <th>Proyek</th>
                                         <th>Nama Lengkap</th>
-                                        <th>Area</th>
-                                        <th>Status</th>
+                                        <th>Waktu</th>
+                                        <th>Keterangan</th>
                                         <th class="text-center">Action</th>
                                     </tr>
                                 </thead>
@@ -36,8 +36,14 @@
                                             <td class="text-primary fw-bolder"><?= $no ?></td>
                                             <td><?= $row->nama_proyek ?></td>
                                             <td><?= $row->nama_lengkap ?></td>
-                                            <td>Area-1</td>
-                                            <td>PM</td>
+                                            <td>
+                                                <?php 
+                                                    $str = $row->tanggal;
+                                                    $realdate = date("d/m/Y", strtotime($str));
+                                                ?>
+                                                <?= $realdate ?>
+                                            </td>
+                                            <td><a><i class="fa fa-eye"></i></a> <?= $row->keterangan ?></td>
                                             <td class="text-center">
                                                 <select class="form-select">
                                                     <option selected="">Ok</option>

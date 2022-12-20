@@ -153,9 +153,9 @@
                                     if ($this->session->userdata('admin_level')=='3'){ ?>
                                     
                                     <div class="w-100 mb-2">
-                                        <a data-bs-toggle="modal" data-bs-target="#realisasiinspeksi" style="cursor: pointer;" class="btn btn-green w-100">
+                                        <!-- <a data-bs-toggle="modal" data-bs-target="#realisasiinspeksi" style="cursor: pointer;" class="btn btn-green w-100">
                                             Realisasi Inspeksi
-                                        </a>
+                                        </a> -->
                                         <!-- Modal -->
                                         <div class="modal fade" id="realisasiinspeksi" tabindex="-1" aria-labelledby="centerModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered">
