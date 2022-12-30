@@ -123,17 +123,20 @@
                                                     <label>SOM</label>
                                                     <select name="som_nc" class="form-control">
                                                         <option value="" selected>--Pilih--</option>
-                                                        <option value="Internal">Internal</option>
-                                                        <option value="Eksternal">Eksternal</option>
+                                                          <?php foreach ($som as $r) { ?>
+                                                              <option value="<?= $r->id?>" ><?= $r->nama_lengkap ?></option>    
+                                                          <?php } ?>
                                                     </select>
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <label>GSP</label>
                                                     <select name="gps_nc" class="form-control">
                                                         <option value="" selected>--Pilih--</option>
-                                                        <option value="Internal" >Internal</option>
-                                                        <option value="Eksternal">Eksternal</option>
+                                                          <?php foreach ($gsp as $r) { ?>
+                                                              <option value="<?= $r->id?>" ><?= $r->nama_lengkap ?></option>    
+                                                          <?php } ?>
                                                     </select>
+
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -141,13 +144,19 @@
                                                     <label>SP</label>
                                                     <select name="sp_nc" class="form-control">
                                                         <option value="" selected>--Pilih--</option>
-                                                        <option value="Internal">Internal</option>
-                                                        <option value="Eksternal">Eksternal</option>
+                                                          <?php foreach ($sp as $r) { ?>
+                                                              <option value="<?= $r->id?>" ><?= $r->nama_lengkap ?></option>    
+                                                          <?php } ?>
                                                     </select>
                                                 </div>
                                                 <div class="form-group col-md-6">
-                                                    <label>SubKon/Mandor</label>
-                                                    <input name="mandor" type="text" class="form-control" >
+                                                    <label>Mandor</label>
+                                                    <select name="mandor" class="form-control">
+                                                        <option value="" selected>--Pilih--</option>
+                                                          <?php foreach ($mandor as $r) { ?>
+                                                              <option value="<?= $r->id?>" ><?= $r->nama_lengkap ?></option>    
+                                                          <?php } ?>
+                                                    </select>
                                                 </div>
                                             </div>
                                         </div> 

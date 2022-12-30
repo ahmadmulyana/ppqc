@@ -800,6 +800,103 @@ function m_vendor_h(id) {
 	return false;
 }
 
+/* MANDOR */
+
+function m_mandor_e(id) {
+	$("#mandor").modal('show');
+	$.ajax({
+		type: "GET",
+		url: base_url+"master/mandor_edit/"+id,
+		success: function(data) {
+			if (data.status==false){
+				$(".modal-title").text("Tambah Data");
+				$("#nama_lengkap").val("");
+				$("#alamat").val("");
+				$("#email").val("");
+				$("#telepon").val("");
+				$("#nama_lengkap").focus();
+			}else{
+				$(".modal-title").text("Edit Data");
+				$("#id").val(data.id);
+				$("#nama_lengkap").val(data.nama_lengkap);
+				$("#alamat").val(data.alamat);
+				$("#email").val(data.email);
+				$("#telepon").val(data.telepon);
+				$("#nama_lengkap").focus();
+			}
+			
+		}
+	});
+	return false;
+}
+
+function m_mandor_h(id) {
+	if (confirm('Anda yakin..?')) {
+		$.ajax({
+			type: "GET",
+			url: base_url+"master/mandor_hapus/"+id,
+			success: function(response) {
+				if (response.status == "ok") {
+					window.location.assign(base_url+"master/mandor"); 
+				} else {
+					console.log('gagal');
+				}
+			}
+		});
+	}
+	return false;
+}
+
+
+/* SOM */
+
+
+function m_som_e(id) {
+	$("#m_som").modal('show');
+	$.ajax({
+		type: "GET",
+		url: base_url+"master/som_edit/"+id,
+		success: function(data) {
+			if (data.status==false){
+				$(".modal-title").text("Tambah Data");
+				$("#nama_lengkap").val("");
+				$("#alamat").val("");
+				$("#email").val("");
+				$("#telepon").val("");
+				$("#nama_lengkap").focus();
+			}else{
+				$(".modal-title").text("Edit Data");
+				$("#id").val(data.id);
+				$("#nama_lengkap").val(data.nama_lengkap);
+				$("#alamat").val(data.alamat);
+				$("#email").val(data.email);
+				$("#telepon").val(data.telepon);
+				$("#nama_lengkap").focus();
+			}
+			
+		}
+	});
+	return false;
+}
+
+function m_som_h(id) {
+	if (confirm('Anda yakin..?')) {
+		$.ajax({
+			type: "GET",
+			url: base_url+"master/som_hapus/"+id,
+			success: function(response) {
+				if (response.status == "ok") {
+					window.location.assign(base_url+"master/som"); 
+				} else {
+					console.log('gagal');
+				}
+			}
+		});
+	}
+	return false;
+}
+
+
 /* MASTER SUPPLIER */
 function m_supplier_e(id) {
 	$("#m_vendor").modal('show');

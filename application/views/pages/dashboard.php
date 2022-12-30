@@ -270,6 +270,7 @@
                                         <tbody>
 
                                             <?php 
+                                            if( !empty($results) ) {
                                                 $no=1;
                                                 foreach ($inspeksi as $row) { ?>
                                                     <tr>
@@ -277,7 +278,7 @@
                                                         <td class="text-primary"><?= $row->keterangan; ?></td>
                                                         <td class="text-primary"><?= $no; ?></td>
                                                     </tr>
-                                                <?php $no++; }
+                                                <?php $no++; } }
                                             ?>
                                         </tbody>
                                     </table>

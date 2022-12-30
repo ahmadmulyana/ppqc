@@ -530,6 +530,145 @@ class Master extends CI_Controller {
 		exit();
 	}
 
+
+	// master mandor
+	public function mandor()
+	{
+		$data_type = $this->db->get('m_mandor')->result();
+
+		$data['data'] = $this->db->get('m_mandor')->result();
+		$page['page'] ="mandor";
+
+		$this->load->view('template/header', $page);
+		$this->load->view('pages/master/mandor', $data);
+		$this->load->view('template/footer', $page);
+	}
+
+	public function mandor_simpan() {
+
+		$nama_lengkap = $this->input->post('nama_lengkap', TRUE);
+		$email = $this->input->post('email', TRUE);
+		$alamat = $this->input->post('alamat', TRUE);
+		$telepon = $this->input->post('telepon', TRUE);
+
+		$id = $this->input->post('id', TRUE);
+
+		$ket 	= "";
+		$tgl = date('Y-m-d');
+
+		$user_id = $this->session->userdata('admin_id');
+
+		if ($id != 0) {
+			$this->db->query("UPDATE m_mandor SET nama_lengkap = '".$nama_lengkap."',
+							alamat = '".$alamat."',
+							email = '".$email."',
+							telepon = '".$telepon."'
+							WHERE id = '".$id."'");
+			$ket = "edit";
+		} else {
+			$ket = "tambah";
+			$this->db->query("INSERT INTO m_mandor VALUES (null, '".$nama_lengkap."','".$alamat."','".$email."','".$telepon."','".$tgl."','".$user_id."')");
+		}
+		
+		redirect('master/mandor');
+		
+	}
+
+	public function mandor_edit(){
+		$uri3 = $this->uri->segment(3);
+
+		$a = $this->db->query("SELECT * FROM m_mandor WHERE id = '$uri3'")->row();
+		if ($a){
+			j($a);	
+		}else{
+			$a['status'] =false;
+			$a['data'] ="tidak ada";
+			j($a);	
+		}
+		
+		exit();
+	}
+
+	public function mandor_hapus(){
+		$uri3 = $this->uri->segment(3);
+		
+		$this->db->query("DELETE FROM m_mandor WHERE id = '".$uri3."'");
+		$ret_arr['status'] 	= "ok";
+		$ret_arr['caption']	= "hapus sukses";
+		j($ret_arr);
+		exit();
+	}
+
+
+
+	// master som
+	public function som()
+	{
+		$data_type = $this->db->get('m_som')->result();
+
+		$data['data'] = $this->db->get('m_som')->result();
+		$page['page'] ="som";
+
+		$this->load->view('template/header', $page);
+		$this->load->view('pages/master/som', $data);
+		$this->load->view('template/footer', $page);
+	}
+
+	public function som_simpan() {
+
+		$nama_lengkap = $this->input->post('nama_lengkap', TRUE);
+		$email = $this->input->post('email', TRUE);
+		$alamat = $this->input->post('alamat', TRUE);
+		$telepon = $this->input->post('telepon', TRUE);
+
+		$id = $this->input->post('id', TRUE);
+
+		$ket 	= "";
+		$tgl = date('Y-m-d');
+
+		$user_id = $this->session->userdata('admin_id');
+
+		if ($id != 0) {
+			$this->db->query("UPDATE m_som SET nama_lengkap = '".$nama_lengkap."',
+							alamat = '".$alamat."',
+							email = '".$email."',
+							telepon = '".$telepon."'
+							WHERE id = '".$id."'");
+			$ket = "edit";
+		} else {
+			$ket = "tambah";
+			$this->db->query("INSERT INTO m_som VALUES (null, '".$nama_lengkap."','".$alamat."','".$email."','".$telepon."','".$tgl."','".$user_id."')");
+		}
+		
+		redirect('master/som');
+		
+	}
+
+	public function som_edit(){
+		$uri3 = $this->uri->segment(3);
+
+		$a = $this->db->query("SELECT * FROM m_som WHERE id = '$uri3'")->row();
+		if ($a){
+			j($a);	
+		}else{
+			$a['status'] =false;
+			$a['data'] ="tidak ada";
+			j($a);	
+		}
+		
+		exit();
+	}
+
+	public function som_hapus(){
+		$uri3 = $this->uri->segment(3);
+		
+		$this->db->query("DELETE FROM m_som WHERE id = '".$uri3."'");
+		$ret_arr['status'] 	= "ok";
+		$ret_arr['caption']	= "hapus sukses";
+		j($ret_arr);
+		exit();
+	}
+
 	// master supplier
 	public function supplier()
 	{

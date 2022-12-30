@@ -236,6 +236,11 @@ class Nc extends CI_Controller {
 		$data['sumber_nc'] = $this->db->get('m_sumber_nc')->result();
 		$data['bahan'] = $this->db->get('m_bahan')->result();
 
+		$data['som'] = $this->db->get('m_som')->result();
+		$data['mandor'] = $this->db->get('m_mandor')->result();
+		$data['gsp'] = $this->db->get('m_gsp')->result();
+		$data['sp'] = $this->db->get('m_sp')->result();
+
 		$this->load->view('template/header', $data);
 		$this->load->view('pages/nc/add_nc', $data);
 		$this->load->view('template/footer', $data);
@@ -301,12 +306,22 @@ class Nc extends CI_Controller {
 		$pekerjaan = $this->security->xss_clean($this->input->post('pekerjaan'));
 		$nama_project = $this->security->xss_clean($this->input->post('nama_project'));
 		$uraian_temuan = $this->security->xss_clean($this->input->post('uraian_temuan'));
-		$mandor = $this->security->xss_clean($this->input->post('mandor'));
+		
 		$sumber_nc = $this->security->xss_clean($this->input->post('sumber_nc'));
 		$status = $this->security->xss_clean($this->input->post('status'));
-		$som_nc = $this->security->xss_clean($this->input->post('som_nc'));
-		$gps_nc = $this->security->xss_clean($this->input->post('gps_nc'));
-		$sp_nc = $this->security->xss_clean($this->input->post('sp_nc'));
+
+		$mandor_id = $this->security->xss_clean($this->input->post('mandor'));
+		$mandor = $this->db->get_where('m_mandor', array('id' => $mandor_id))->row()->nama_lengkap;
+
+		$som_id = $this->security->xss_clean($this->input->post('som_nc'));
+		$som_nc = $this->db->get_where('m_som', array('id' => $som_id))->row()->nama_lengkap;
+
+		$gps_id = $this->security->xss_clean($this->input->post('gps_nc'));
+		$gps_nc = $this->db->get_where('m_gsp', array('id' => $gps_id))->row()->nama_lengkap;
+
+		$sp_id = $this->security->xss_clean($this->input->post('sp_nc'));
+		$sp_nc = $this->db->get_where('m_sp', array('id' => $sp_id))->row()->nama_lengkap;
+
 		$isTemuan = $this->security->xss_clean($this->input->post('isTemuan'));
 
 		$this->form_validation->set_rules('nomor_nc', 'Nomor NC', 'required');
@@ -338,9 +353,13 @@ class Nc extends CI_Controller {
 				'nama_project'  	=> $nama_project,
 				'sumber_nc' 		=> $sumber_nc,
 				'som_nc' 			=> $som_nc,
+				'som_id' 			=> $som_id,
 				'gps_nc' 			=> $gps_nc,
+				'gps_id' 			=> $gps_id,
 				'sp_nc' 			=> $sp_nc,
+				'sp_id' 			=> $sp_id,
 				'mandor' 			=> $mandor,
+				'mandor_id' 		=> $mandor_id,
 				'status_nc' 		=> $status,
 				'created_by'	 	=> $this->session->userdata('admin_id')
 			);
@@ -353,9 +372,13 @@ class Nc extends CI_Controller {
 				'type_nc' 			=> $type_nc,
 				'sumber_nc' 		=> $sumber_nc,
 				'som_nc' 			=> $som_nc,
+				'som_id' 			=> $som_id,
 				'gps_nc' 			=> $gps_nc,
+				'gps_id' 			=> $gps_id,
 				'sp_nc' 			=> $sp_nc,
+				'sp_id' 			=> $sp_id,
 				'mandor' 			=> $mandor,
+				'mandor_id' 		=> $mandor_id,
 				'level_nc' 			=> $level_nc,
 				'tanggal_closing' 	=> $tanggal_closing,
 				'lokasi' 			=> $lokasi,

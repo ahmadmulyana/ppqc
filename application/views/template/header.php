@@ -67,12 +67,14 @@
                     }
                     ?>
 
+                    <?php if ($this->session->userdata('admin_level') == "3" || $this->session->userdata('admin_level') == "1") { ?>
+
                     <a class="nav-link sidebar-link <?= $active; ?>" data-bs-toggle="collapse" href="#layout" role="button" aria-expanded="false" aria-controls="layout">
                         <span class="material-icons-round material-22">dashboard</span>
                         <span class="subtitle ms-3">Quality Achievement</span>
                         <span class="material-icons-round material-22 expand-icon ms-auto">expand_more</span>
                     </a>
-
+                    <?php } ?>
                     
                     <div class="<?= $collapse; ?> sidebar-collapse" id="layout">
                         <ul class="navbar-nav sidebar-dropdown">
@@ -96,7 +98,7 @@
                                     <span class="subtitle">QSIA</span>
                                 </a>
                             </li>
-                            <?php }else{ ?>
+                            <?php }else if ($this->session->userdata('admin_level') == "1") { ?>
 
                             <li>
                                 <a href="<?= site_url('summaryachiement');?>" class="nav-link sidebar-link <?= $page=="summaryachiement" ? 'active' : ''; ?>">
@@ -121,12 +123,16 @@
                         </ul>
                     </div>
                 </li>
+
+                <?php if ($this->session->userdata('admin_level') <> "5") { ?>
+
                 <li>
                     <a href="<?= site_url('css');?>" class="nav-link sidebar-link <?= $page=="css" || $page=="css_detail" ? 'active' : ''; ?>">
                         <span class="material-icons-round material-22">auto_awesome_motion</span>
                         <span class="subtitle ms-3">CSS</span>
                     </a>
                 </li>
+
                 <li>
                     <a href="<?= site_url('inspeksi');?>" class="nav-link sidebar-link <?= $page=="inspeksi" ? 'active' : ''; ?>">
                         <span class="material-icons-round material-22">view_column</span>
@@ -207,9 +213,12 @@
                         <span class="subtitle ms-3">Observasi</span>
                     </a>
                 </li>
+
+                <?php } ?>
+
                 <li>
                     <?php 
-                    if ($this->session->userdata('admin_level') == "3") { ?>
+                    if ($this->session->userdata('admin_level') == "3" || $this->session->userdata('admin_level') == "1") { ?>
                         <a href="<?= site_url('bank_data/admin');?>" class="nav-link sidebar-link">
                             <span class="material-icons-round material-22">storage</span>
                             <span class="subtitle ms-3">Good Product</span>
@@ -223,6 +232,7 @@
                     
                 </li>
                 
+                <?php if ($this->session->userdata('admin_level') <> "5") { ?>
                 <div class="mb-2 mt-4">
                     <div class="text-secondary text-uppercase fw-bolder nav-title body">General</div>
                 </div>
@@ -291,6 +301,30 @@
                             </li>
 
                             <li>
+                                <a href="<?= site_url('master/mandor');?>" class="nav-link sidebar-link <?= $page=="mandor" ? 'active' : ''; ?>">
+                                    <span class="subtitle">Mandor</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="<?= site_url('master/som');?>" class="nav-link sidebar-link <?= $page=="som" ? 'active' : ''; ?>">
+                                    <span class="subtitle">SOM</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="<?= site_url('master/gsp');?>" class="nav-link sidebar-link <?= $page=="gsp" ? 'active' : ''; ?>">
+                                    <span class="subtitle">GSP</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="<?= site_url('master/sp');?>" class="nav-link sidebar-link <?= $page=="sp" ? 'active' : ''; ?>">
+                                    <span class="subtitle">SP</span>
+                                </a>
+                            </li>
+
+                            <li>
                                 <a href="<?= site_url('master/supplier');?>" class="nav-link sidebar-link <?= $page=="supplier" ? 'active' : ''; ?>">
                                     <span class="subtitle">Supplier</span>
                                 </a>
@@ -327,6 +361,8 @@
                         <span class="subtitle ms-3">Documentation</span>
                     </a>
                 </li>
+
+                <?php } ?>
             </ul>
         </div>
     </div>
